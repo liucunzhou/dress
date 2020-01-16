@@ -19,9 +19,7 @@
         } catch (e) {
         }
     </script>
-
     {include file="common/sidebar"}
-
     <div class="main-content">
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -31,9 +29,9 @@
                         <a href="#">首页</a>
                     </li>
                     <li>
-                        <a href="#">权限管理</a>
+                        <a href="#">礼服管理</a>
                     </li>
-                    <li class="active">添加权限</li>
+                    <li class="active">添加礼服</li>
                 </ul>
 
                 <div class="nav-search" id="nav-search">
@@ -44,28 +42,45 @@
                             <i class="ace-icon fa fa-search nav-search-icon"></i>
                         </span>
                     </form>
-                </div><!-- /.nav-search -->
+                </div>
             </div>
 
             <div class="page-content">
                 {include file="common/setting"}
-
                 <div class="page-header">
                     <h1>
-                        添加权限
+                        添加礼服
                     </h1>
                 </div>
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <table class="table table-striped">
+                        <form class="form-ajax" method="post" action="admin.php?s=Dress/doEdit">
+                            <table class="table table-striped">
                             <tbody>
                             <tr>
-                                <td width="15%">是否菜单</td>
+                                <td width="15%">礼服分类</td>
                                 <td width="70%">
                                     <div class="row">
                                         <div class="col-sm-8 col-xs-12">
-                                            <input type="text" name="row[name]" class="form-control" data-tip="请填写站点名称">
+                                            <select name="row[category_id]" class="form-control">
+                                                <option value="0">---请选择分类--</option>
+                                                {foreach name="dressCategories" item="value"}
+                                                <option value="{$value.id}" {if $value['id']==$data['category_id']}selected{/if}>{$value.title}</option>
+                                                {/foreach}
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4"></div>
+                                    </div>
+                                </td>
+                                <td width="15%">必选</td>
+                            </tr>
+                            <tr>
+                                <td width="15%">礼服名称</td>
+                                <td width="70%">
+                                    <div class="row">
+                                        <div class="col-sm-8 col-xs-12">
+                                            <input type="text" name="row[title]" value="{$data.title}" class="form-control" data-tip="分类名称">
                                         </div>
                                         <div class="col-sm-4"></div>
                                     </div>
@@ -73,11 +88,23 @@
                                 <td width="15%">必填</td>
                             </tr>
                             <tr>
-                                <td width="15%">腹肌</td>
+                                <td width="15%">SKU码</td>
                                 <td width="70%">
                                     <div class="row">
                                         <div class="col-sm-8 col-xs-12">
-                                            <input type="text" name="row[name]" class="form-control" data-tip="请填写站点名称">
+                                            <input type="text" name="row[sku]" value="{$data.sku}" class="form-control" data-tip="SKU码">
+                                        </div>
+                                        <div class="col-sm-4"></div>
+                                    </div>
+                                </td>
+                                <td width="15%">唯一,必填</td>
+                            </tr>
+                            <tr>
+                                <td width="15%">租赁价格</td>
+                                <td width="70%">
+                                    <div class="row">
+                                        <div class="col-sm-8 col-xs-12">
+                                            <input type="text" name="row[rent_price]" value="{$data.rent_price}" class="form-control" data-tip="租赁价格">
                                         </div>
                                         <div class="col-sm-4"></div>
                                     </div>
@@ -85,11 +112,11 @@
                                 <td width="15%">必填</td>
                             </tr>
                             <tr>
-                                <td width="15%">站点名称</td>
+                                <td width="15%">销售价格</td>
                                 <td width="70%">
                                     <div class="row">
                                         <div class="col-sm-8 col-xs-12">
-                                            <input type="text" name="row[name]" class="form-control" data-tip="请填写站点名称">
+                                            <input type="text" name="row[sale_price]" value="{$data.sale_price}" class="form-control" data-tip="销售价格">
                                         </div>
                                         <div class="col-sm-4"></div>
                                     </div>
@@ -97,40 +124,67 @@
                                 <td width="15%">必填</td>
                             </tr>
                             <tr>
-                                <td width="15%">站点名称</td>
+                                <td width="15%">尺码</td>
                                 <td width="70%">
                                     <div class="row">
                                         <div class="col-sm-8 col-xs-12">
-                                            <input type="text" name="row[name]" class="form-control" data-tip="请填写站点名称">
+                                            <select name="row[size_id]" class="form-control">
+                                                <option value="0">---请选择尺码--</option>
+                                                {foreach name="sizes" item="value"}
+                                                <option value="{$value.id}" {if $value['id']==$data['size_id']}selected{/if}>{$value.title}</option>
+                                                {/foreach}
+                                            </select>
                                         </div>
                                         <div class="col-sm-4"></div>
                                     </div>
                                 </td>
-                                <td width="15%">必填</td>
+                                <td width="15%">必选</td>
                             </tr>
                             <tr>
-                                <td width="15%">站点名称</td>
+                                <td width="15%">颜色</td>
                                 <td width="70%">
                                     <div class="row">
                                         <div class="col-sm-8 col-xs-12">
-                                            <input type="text" name="row[name]" class="form-control" data-tip="请填写站点名称">
+                                            <select name="row[color_id]" class="form-control">
+                                                <option value="0">---请选择颜色--</option>
+                                                {foreach name="colors" item="value"}
+                                                <option value="{$value.id}" {if $value['id']==$data['color_id']}selected{/if}>{$value.title}</option>
+                                                {/foreach}
+                                            </select>
                                         </div>
                                         <div class="col-sm-4"></div>
                                     </div>
                                 </td>
-                                <td width="15%">必填</td>
+                                <td width="15%">必选</td>
                             </tr>
                             <tr>
-                                <td width="15%">站点名称</td>
+                                <td width="15%">供应商</td>
                                 <td width="70%">
                                     <div class="row">
                                         <div class="col-sm-8 col-xs-12">
-                                            <input type="text" name="row[name]" class="form-control" data-tip="请填写站点名称">
+                                            <select name="row[supplier_id]" class="form-control">
+                                                <option value="0">---请选择供应商--</option>
+                                                {foreach name="suppliers" item="value"}
+                                                <option value="{$value.id}" {if $value['id']==$data['supplier_id']}selected{/if}>{$value.title}</option>
+                                                {/foreach}
+                                            </select>
                                         </div>
                                         <div class="col-sm-4"></div>
                                     </div>
                                 </td>
-                                <td width="15%">必填</td>
+                                <td width="15%">必选</td>
+                            </tr>
+                            <tr>
+                                <td width="15%">排序</td>
+                                <td width="70%">
+                                    <div class="row">
+                                        <div class="col-sm-8 col-xs-12">
+                                            <input type="number" name="row[weigh]" value="{$data.weigh}" class="form-control" data-tip="分类排序">
+                                        </div>
+                                        <div class="col-sm-4"></div>
+                                    </div>
+                                </td>
+                                <td width="15%"></td>
                             </tr>
 
                             </tbody>
@@ -138,6 +192,7 @@
                                 <tr>
                                     <td></td>
                                     <td>
+                                        <input type="hidden" name="row[id]" value="{$data.id}">
                                         <input type="hidden" name="redirect" value="{$_SERVER['HTTP_REFERER']}">
                                         <button type="submit" class="btn btn-sm btn-danger">立即添加</button>
                                         <button type="reset" class="btn btn-sm btn-default">重置</button>
@@ -146,6 +201,7 @@
                                 </tr>
                             </tfoot>
                         </table>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -11,5 +11,7 @@ use think\Model;
 class Package extends Model
 {
     protected $table = 'dr_dress_package';
-    //
+    protected $autoWriteTimestamp = true;
+    protected $createTime = 'createtime';
+    protected $updateTime = 'updatetime';
 }

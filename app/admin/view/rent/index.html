@@ -19,7 +19,9 @@
         } catch (e) {
         }
     </script>
+
     {include file="common/sidebar"}
+
     <div class="main-content">
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -29,9 +31,9 @@
                         <a href="#">首页</a>
                     </li>
                     <li>
-                        <a href="#">礼服管理</a>
+                        <a href="#">订单管理</a>
                     </li>
-                    <li class="active">礼服列表</li>
+                    <li class="active">租赁订单</li>
                 </ul>
 
                 <div class="nav-search" id="nav-search">
@@ -47,36 +49,73 @@
 
             <div class="page-content">
                 {include file="common/setting"}
+                <div class="tabbable">
+                    <div class="navbox clearfix">
+                        <ul class="nav nav-tabs pull-left" id="myTab">
+                            <li class="active">
+                                <a data-toggle="tab" href="#home">
+                                    <i class="green ace-icon fa fa-home bigger-120"></i>
+                                    全部
+                                </a>
+                            </li>
 
-                <div class="page-header">
-                    <h1>
-                        礼服列表
-                        <small>
-                            <a class="ace-icon fa fa-plus" href="/admin.php?s=dress/create"></a>
-                        </small>
-                    </h1>
-                </div>
+                            <li>
+                                <a data-toggle="tab" href="#messages">
+                                    待取件
+                                    <span class="badge badge-danger">6</span>
+                                </a>
+                            </li>
 
-                <div class="row">
+                            <li>
+                                <a data-toggle="tab" href="#messages">
+                                    待还件
+                                    <span class="badge badge-danger">6</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a data-toggle="tab" href="#messages">
+                                    待清洗
+                                    <span class="badge badge-danger">8</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a data-toggle="tab" href="#messages">
+                                    已完成
+                                    <span class="badge badge-danger">8</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="btn-group pull-right">
+                            <a href="/admin.php?s=rent/create" class="btn btn-white btn-sm btn-primary">下单</a>
+                            <a href="/admin.php?s=rent/fetch" class="btn btn-white btn-sm btn-info">取件</a>
+                            <a href="/admin.php?s=rent/back" class="btn btn-white btn-sm btn-danger">还件</a>
+                            <a href="/admin.php?s=rent/wash" class="btn btn-white btn-sm btn-success">清洗</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
                     <div class="col-xs-12">
                         <table id="simple-table" class="table  table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th class="center">
+                                <th class="center" width="20">
                                     <label class="pos-rel">
                                         <input type="checkbox" class="ace" />
                                         <span class="lbl"></span>
                                     </label>
                                 </th>
-                                <th class="center">ID</th>
-                                <th>礼服分类</th>
-                                <th>商品名称</th>
-                                <th class="center">商品编号</th>
-                                <th>商品图片</th>
-                                <th class="center">租赁价格</th>
-                                <th class="center">出售价格</th>
-                                <th class="center">状态</th>
-                                <th class="center">排序</th>
+                                <th>ID</th>
+                                <th>订单号</th>
+                                <th>订单状态</th>
+                                <th>客户姓名</th>
+                                <th>联系电话</th>
+                                <th>租赁日期</th>
+                                <th>还件日期</th>
+                                <th>操作员</th>
+                                <th>创建时间</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -90,29 +129,23 @@
                                         <span class="lbl"></span>
                                     </label>
                                 </td>
-                                <td class="center">{$row.id}</td>
-                                <td>{$dressCategories[$row['category_id']]['title']}</td>
+                                <td>{$row.id}</td>
                                 <td>{$row.title}</td>
-                                <td class="center">{$row.sku}</td>
-                                <td>{$row.images}</td>
-                                <td class="center">{$row.rent_price}</td>
-                                <td class="center">{$row.sale_price}</td>
-                                <td class="center">{$row.status=='normal' ? '空闲' : '租赁中'}</td>
-                                <td class="center">{$row.weigh}</td>
+                                <td>{$row.status}</td>
+                                <td>{$row.weigh}</td>
                                 <td>
                                     <div class="hidden-sm hidden-xs btn-group">
-                                        <a class="btn btn-xs btn-success" href="/admin.php?s=dress/edit/id/{$row.id}">编辑</a>
-                                        <a class="btn btn-xs btn-info">清洗</a>
-                                        <a class="btn btn-xs btn-danger">报废</a>
-                                        <a class="btn btn-xs btn-orange">删除</a>
-                                        <a class="btn btn-xs btn-info">二维码</a>
+                                        <a class="btn btn-xs btn-success">编辑</a>
+                                        <a class="btn btn-xs btn-danger">删除</a>
                                     </div>
                                 </td>
                             </tr>
+
                             {/foreach}
                             </tbody>
                         </table>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

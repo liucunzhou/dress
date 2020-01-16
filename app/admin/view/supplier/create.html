@@ -19,9 +19,7 @@
         } catch (e) {
         }
     </script>
-
     {include file="common/sidebar"}
-
     <div class="main-content">
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -31,9 +29,12 @@
                         <a href="#">首页</a>
                     </li>
                     <li>
-                        <a href="#">权限管理</a>
+                        <a href="#">礼服管理</a>
                     </li>
-                    <li class="active">添加权限</li>
+                    <li>
+                        <a href="#">供应商管理</a>
+                    </li>
+                    <li class="active">添加供应商</li>
                 </ul>
 
                 <div class="nav-search" id="nav-search">
@@ -44,28 +45,28 @@
                             <i class="ace-icon fa fa-search nav-search-icon"></i>
                         </span>
                     </form>
-                </div><!-- /.nav-search -->
+                </div>
             </div>
 
             <div class="page-content">
                 {include file="common/setting"}
-
                 <div class="page-header">
                     <h1>
-                        添加权限
+                        添加供应商
                     </h1>
                 </div>
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <table class="table table-striped">
+                        <form class="form-ajax" method="post" action="admin.php?s=supplier/doCreate">
+                            <table class="table table-striped">
                             <tbody>
                             <tr>
-                                <td width="15%">是否菜单</td>
+                                <td width="15%">供应商</td>
                                 <td width="70%">
                                     <div class="row">
                                         <div class="col-sm-8 col-xs-12">
-                                            <input type="text" name="row[name]" class="form-control" data-tip="请填写站点名称">
+                                            <input type="text" name="row[title]" value="" class="form-control" data-tip="供应商">
                                         </div>
                                         <div class="col-sm-4"></div>
                                     </div>
@@ -73,11 +74,23 @@
                                 <td width="15%">必填</td>
                             </tr>
                             <tr>
-                                <td width="15%">腹肌</td>
+                                <td width="15%">联系电话</td>
                                 <td width="70%">
                                     <div class="row">
                                         <div class="col-sm-8 col-xs-12">
-                                            <input type="text" name="row[name]" class="form-control" data-tip="请填写站点名称">
+                                            <input type="text" name="row[phone]" value="" class="form-control" data-tip="联系电话">
+                                        </div>
+                                        <div class="col-sm-4"></div>
+                                    </div>
+                                </td>
+                                <td width="15%">唯一,必填</td>
+                            </tr>
+                            <tr>
+                                <td width="15%">联系地址</td>
+                                <td width="70%">
+                                    <div class="row">
+                                        <div class="col-sm-8 col-xs-12">
+                                            <input type="text" name="row[address]" value="" class="form-control" data-tip="联系地址">
                                         </div>
                                         <div class="col-sm-4"></div>
                                     </div>
@@ -85,11 +98,11 @@
                                 <td width="15%">必填</td>
                             </tr>
                             <tr>
-                                <td width="15%">站点名称</td>
+                                <td width="15%">银行</td>
                                 <td width="70%">
                                     <div class="row">
                                         <div class="col-sm-8 col-xs-12">
-                                            <input type="text" name="row[name]" class="form-control" data-tip="请填写站点名称">
+                                            <input type="text" name="row[bank]" value="" class="form-control" data-tip="银行">
                                         </div>
                                         <div class="col-sm-4"></div>
                                     </div>
@@ -97,11 +110,11 @@
                                 <td width="15%">必填</td>
                             </tr>
                             <tr>
-                                <td width="15%">站点名称</td>
+                                <td width="15%">账号名称</td>
                                 <td width="70%">
                                     <div class="row">
                                         <div class="col-sm-8 col-xs-12">
-                                            <input type="text" name="row[name]" class="form-control" data-tip="请填写站点名称">
+                                            <input type="text" name="row[bank_account]" value="" class="form-control" data-tip="账号名称">
                                         </div>
                                         <div class="col-sm-4"></div>
                                     </div>
@@ -109,11 +122,11 @@
                                 <td width="15%">必填</td>
                             </tr>
                             <tr>
-                                <td width="15%">站点名称</td>
+                                <td width="15%">银行账号</td>
                                 <td width="70%">
                                     <div class="row">
                                         <div class="col-sm-8 col-xs-12">
-                                            <input type="text" name="row[name]" class="form-control" data-tip="请填写站点名称">
+                                            <input type="text" name="row[bank_account_num]" value="" class="form-control" data-tip="银行账号">
                                         </div>
                                         <div class="col-sm-4"></div>
                                     </div>
@@ -121,18 +134,32 @@
                                 <td width="15%">必填</td>
                             </tr>
                             <tr>
-                                <td width="15%">站点名称</td>
+                                <td width="15%">状态</td>
                                 <td width="70%">
                                     <div class="row">
                                         <div class="col-sm-8 col-xs-12">
-                                            <input type="text" name="row[name]" class="form-control" data-tip="请填写站点名称">
+                                            <select name="row[status]" class="form-control">
+                                                <option value="normal">显示</option>
+                                                <option value="hidden">隐藏</option>
+                                            </select>
                                         </div>
                                         <div class="col-sm-4"></div>
                                     </div>
                                 </td>
-                                <td width="15%">必填</td>
+                                <td width="15%"></td>
                             </tr>
-
+                            <tr>
+                                <td width="15%">排序</td>
+                                <td width="70%">
+                                    <div class="row">
+                                        <div class="col-sm-8 col-xs-12">
+                                            <input type="text" name="row[weigh]" value="" class="form-control" data-tip="分类排序">
+                                        </div>
+                                        <div class="col-sm-4"></div>
+                                    </div>
+                                </td>
+                                <td width="15%"></td>
+                            </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -146,6 +173,7 @@
                                 </tr>
                             </tfoot>
                         </table>
+                        </form>
                     </div>
                 </div>
             </div>

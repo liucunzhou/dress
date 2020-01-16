@@ -31,7 +31,7 @@
                     <li>
                         <a href="#">礼服管理</a>
                     </li>
-                    <li class="active">礼服列表</li>
+                    <li class="active">礼服报废管理</li>
                 </ul>
 
                 <div class="nav-search" id="nav-search">
@@ -50,9 +50,9 @@
 
                 <div class="page-header">
                     <h1>
-                        礼服列表
+                        礼服报废管理
                         <small>
-                            <a class="ace-icon fa fa-plus" href="/admin.php?s=dress/create"></a>
+                            <a class="ace-icon fa fa-plus" href="/admin.php?s=scrap/create"></a>
                         </small>
                     </h1>
                 </div>
@@ -69,12 +69,11 @@
                                     </label>
                                 </th>
                                 <th class="center">ID</th>
-                                <th>礼服分类</th>
-                                <th>商品名称</th>
-                                <th class="center">商品编号</th>
-                                <th>商品图片</th>
-                                <th class="center">租赁价格</th>
-                                <th class="center">出售价格</th>
+                                <th>报废编号</th>
+                                <th>所在门店</th>
+                                <th>礼服名称</th>
+                                <th>处理人</th>
+                                <th>确认人</th>
                                 <th class="center">状态</th>
                                 <th class="center">排序</th>
                                 <th></th>
@@ -90,22 +89,16 @@
                                         <span class="lbl"></span>
                                     </label>
                                 </td>
-                                <td class="center">{$row.id}</td>
-                                <td>{$dressCategories[$row['category_id']]['title']}</td>
-                                <td>{$row.title}</td>
-                                <td class="center">{$row.sku}</td>
-                                <td>{$row.images}</td>
-                                <td class="center">{$row.rent_price}</td>
-                                <td class="center">{$row.sale_price}</td>
-                                <td class="center">{$row.status=='normal' ? '空闲' : '租赁中'}</td>
-                                <td class="center">{$row.weigh}</td>
+                                <td>{$row.id}</td>
+                                <td>{$row.scrap_no}</td>
+                                <td>{$row.store_id}</td>
+                                <td>{$row.dress_id}</td>
+                                <td>{$row.deal_user_id}</td>
+                                <td>{$row.confirm_user_id}</td>
                                 <td>
                                     <div class="hidden-sm hidden-xs btn-group">
-                                        <a class="btn btn-xs btn-success" href="/admin.php?s=dress/edit/id/{$row.id}">编辑</a>
-                                        <a class="btn btn-xs btn-info">清洗</a>
-                                        <a class="btn btn-xs btn-danger">报废</a>
-                                        <a class="btn btn-xs btn-orange">删除</a>
-                                        <a class="btn btn-xs btn-info">二维码</a>
+                                        <a class="btn btn-xs btn-success" href="/admin.php?=scrap/edit">编辑</a>
+                                        <a class="btn btn-xs btn-danger" href="/admin.php?=scrap/delete">删除</a>
                                     </div>
                                 </td>
                             </tr>

@@ -43,7 +43,7 @@ class Backend extends Base
         $where['status'] = 'normal';
         $rows = $this->model->where($where)->select();
         View::assign('rows', $rows);
-        //
+
         return View::fetch();
     }
 
@@ -59,14 +59,29 @@ class Backend extends Base
     }
 
     /**
-     * 保存新建的资源
+     * 执行添加l逻辑.
      *
-     * @param  \think\Request  $request
      * @return \think\Response
      */
-    public function save(Request $request)
+    public function doCreate()
     {
-        //
+        $params = $this->request->param();
+        $result = $this->model->save($params['row']);
+
+        if ($result) {
+            $arr = [
+                'code'  => '200',
+                'redirect' => $params['redirect'],
+                'msg'   => '添加成功',
+            ];
+        } else {
+            $arr = [
+                'code'  => '500',
+                'msg'   => '添加成功',
+            ];
+        }
+
+        return json($arr);
     }
 
     /**
@@ -88,7 +103,41 @@ class Backend extends Base
      */
     public function edit($id)
     {
-        //
+        $row = $this->model->find($id);
+        $data = $row->getData();
+
+        View::assign('data', $data);
+
+        return View::fetch();
+    }
+
+    /**
+     * 执行编辑资源逻辑.
+     *
+     * @param  int  $id
+     * @return \think\Response
+     */
+    public function doEdit()
+    {
+        $params = $this->request->param();
+
+        $row = $this->model->find($params['row']['id']);
+
+        $result = $row->save($params['row']);
+        if ($result) {
+            $arr = [
+                'code'  => '200',
+                'redirect' => $params['redirect'],
+                'msg'   => '添加成功',
+            ];
+        } else {
+            $arr = [
+                'code'  => '500',
+                'msg'   => '添加成功',
+            ];
+        }
+
+        return json($arr);
     }
 
     /**

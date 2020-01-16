@@ -8,7 +8,7 @@ use think\Model;
 /**
  * @mixin think\Model
  */
-class DressCategory extends Model
+class Size extends Model
 {
     protected $autoWriteTimestamp = true;
     protected $createTime = 'createtime';

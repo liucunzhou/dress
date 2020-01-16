@@ -19,7 +19,9 @@
         } catch (e) {
         }
     </script>
+
     {include file="common/sidebar"}
+
     <div class="main-content">
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -29,9 +31,9 @@
                         <a href="#">首页</a>
                     </li>
                     <li>
-                        <a href="#">礼服管理</a>
+                        <a href="#">客资管理</a>
                     </li>
-                    <li class="active">礼服列表</li>
+                    <li class="active">我的客资</li>
                 </ul>
 
                 <div class="nav-search" id="nav-search">
@@ -50,9 +52,9 @@
 
                 <div class="page-header">
                     <h1>
-                        礼服列表
+                        我的客资
                         <small>
-                            <a class="ace-icon fa fa-plus" href="/admin.php?s=dress/create"></a>
+                            <a class="ace-icon fa fa-plus" href="/admin.php?s=customer/create"></a>
                         </small>
                     </h1>
                 </div>
@@ -62,21 +64,20 @@
                         <table id="simple-table" class="table  table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th class="center">
+                                <th class="center" width="20">
                                     <label class="pos-rel">
                                         <input type="checkbox" class="ace" />
                                         <span class="lbl"></span>
                                     </label>
                                 </th>
-                                <th class="center">ID</th>
-                                <th>礼服分类</th>
-                                <th>商品名称</th>
-                                <th class="center">商品编号</th>
-                                <th>商品图片</th>
-                                <th class="center">租赁价格</th>
-                                <th class="center">出售价格</th>
-                                <th class="center">状态</th>
-                                <th class="center">排序</th>
+                                <th>ID</th>
+                                <th>录入者</th>
+                                <th>回访数</th>
+                                <th>客资来源</th>
+                                <th>客户姓名</th>
+                                <th>联系电话</th>
+                                <th>性别</th>
+                                <th>创建时间</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -90,25 +91,22 @@
                                         <span class="lbl"></span>
                                     </label>
                                 </td>
-                                <td class="center">{$row.id}</td>
-                                <td>{$dressCategories[$row['category_id']]['title']}</td>
-                                <td>{$row.title}</td>
-                                <td class="center">{$row.sku}</td>
-                                <td>{$row.images}</td>
-                                <td class="center">{$row.rent_price}</td>
-                                <td class="center">{$row.sale_price}</td>
-                                <td class="center">{$row.status=='normal' ? '空闲' : '租赁中'}</td>
-                                <td class="center">{$row.weigh}</td>
+                                <td>{$row.id}</td>
+                                <td>{$row.operate_id}</td>
+                                <td>{$row.visit_times}</td>
+                                <td>{$row.source_id}</td>
+                                <td>{$row.realname}</td>
+                                <td>{$row.mobile}</td>
+                                <td>{$row.sex}</td>
+                                <td>{$row.createtime}</td>
                                 <td>
                                     <div class="hidden-sm hidden-xs btn-group">
-                                        <a class="btn btn-xs btn-success" href="/admin.php?s=dress/edit/id/{$row.id}">编辑</a>
-                                        <a class="btn btn-xs btn-info">清洗</a>
-                                        <a class="btn btn-xs btn-danger">报废</a>
-                                        <a class="btn btn-xs btn-orange">删除</a>
-                                        <a class="btn btn-xs btn-info">二维码</a>
+                                        <a class="btn btn-xs btn-success">编辑</a>
+                                        <a class="btn btn-xs btn-danger">删除</a>
                                     </div>
                                 </td>
                             </tr>
+
                             {/foreach}
                             </tbody>
                         </table>
