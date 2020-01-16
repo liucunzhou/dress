@@ -39,7 +39,7 @@
                     <li>
                         <a href="#">租赁订单</a>
                     </li>
-                    <li class="active">租赁下单</li>
+                    <li class="active">更新租赁订单</li>
                 </ul>
             </div>
 
@@ -53,31 +53,31 @@
                             <tr>
                                 <td width="15%" class="red">客户姓名</td>
                                 <td width="85%">
-                                    <input type="text" name="row[realname]" value="" class="form-control" data-tip="客户姓名">
+                                    <input type="text" name="row[realname]" value="{$data.realname}" class="form-control" data-tip="客户姓名">
                                 </td>
                             </tr>
                             <tr>
                                 <td width="15%" class="red">手机号</td>
                                 <td width="85%">
-                                    <input type="text" name="row[mobile]" value="" class="form-control" data-tip="手机号">
+                                    <input type="text" name="row[mobile]" value="{$data.mobile}" class="form-control" data-tip="手机号">
                                 </td>
                             </tr>
                             <tr>
                                 <td width="15%" class="red">取件日期</td>
                                 <td width="85%">
-                                    <input type="text" name="row[rent_date]" value="" class="form-control date" data-tip="手机号">
+                                    <input type="text" name="row[rent_date]" value="{:date('Y-m-d',$data['rent_date'])}" class="form-control date" data-tip="手机号">
                                 </td>
                             </tr>
                             <tr>
                                 <td width="15%" class="red">还件日期</td>
                                 <td width="85%">
-                                    <input type="text" name="row[back_date]" value="" class="form-control date" data-tip="手机号">
+                                    <input type="text" name="row[back_date]" value="{:date('Y-m-d',$data['back_date'])}" class="form-control date" data-tip="手机号">
                                 </td>
                             </tr>
                             <tr>
                                 <td width="15%" class="red">订单总金额</td>
                                 <td width="85%">
-                                    <input type="text" name="row[totals]" value="" class="form-control" data-tip="订单总金额">
+                                    <input type="text" name="row[totals]" value="{$data['totals']}" class="form-control" data-tip="订单总金额">
                                 </td>
                             </tr>
                             <tr>
@@ -120,7 +120,7 @@
                                     <td></td>
                                     <td>
                                         <input type="hidden" name="redirect" value="{$_SERVER['HTTP_REFERER']}">
-                                        <button type="submit" class="btn btn-sm btn-danger">立即添加</button>
+                                        <button type="submit" class="btn btn-sm btn-danger">立即保存</button>
                                         <button type="reset" class="btn btn-sm btn-default">重置</button>
                                     </td>
                                 </tr>
@@ -148,7 +148,36 @@
                         </table>
                         <div class="row">
                             <div class="col-xs-12 select-goods-list">
+                                {foreach name="goodsList" item="goods"}
+                                    {if $goods['type']=='dress'}
+                                    <div class="media search-media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="media-object" data-src="holder.js/72x72" alt="72x72" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2272%22%20height%3D%2272%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2072%2072%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16fac60cad0%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16fac60cad0%22%3E%3Crect%20width%3D%2272%22%20height%3D%2272%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2217.4609375%22%20y%3D%2240.5%22%3E72x72%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 72px; height: 72px;">
+                                            </a>
+                                        </div>
 
+                                        <div class="media-body">
+                                            <div>
+                                                <h4 class="media-heading">
+                                                    <a href="#" class="blue">{$goods.title}</a>
+                                                </h4>
+                                            </div>
+                                            <p>商品描述</p>
+
+                                            <div class="search-actions text-center">
+                                                <span class="text-info">￥</span>
+
+                                                <span class="blue bolder bigger-150">{$goods.rent_price}</span>
+                                                <input type="hidden" name="dress[]" value="{$goods.id}">
+                                                <a href="javascript:void(0);" class="search-btn-action btn btn-sm btn-block btn-danger btn-delete-media">删除</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {else /}
+
+                                    {/if}
+                                {/foreach}
                             </div>
                         </div>
                     </div>

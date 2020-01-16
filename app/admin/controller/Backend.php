@@ -162,4 +162,17 @@ class Backend extends Base
     {
         //
     }
+
+    /**
+     * 生成source
+     */
+    public function source($id)
+    {
+        $result = $this->model->column($id);
+
+        $filename = $this->model->getName();
+        $filename = strtolower($filename);
+        $content = "var {$filename} =".json_encode($result).";";
+        file_put_contents("./assets/source/{$filename}.js", $content);
+    }
 }

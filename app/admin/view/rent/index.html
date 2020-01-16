@@ -49,53 +49,12 @@
 
             <div class="page-content">
                 {include file="common/setting"}
-                <div class="tabbable">
-                    <div class="navbox clearfix">
-                        <ul class="nav nav-tabs pull-left" id="myTab">
-                            <li class="active">
-                                <a data-toggle="tab" href="#home">
-                                    <i class="green ace-icon fa fa-home bigger-120"></i>
-                                    全部
-                                </a>
-                            </li>
-
-                            <li>
-                                <a data-toggle="tab" href="#messages">
-                                    待取件
-                                    <span class="badge badge-danger">6</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a data-toggle="tab" href="#messages">
-                                    待还件
-                                    <span class="badge badge-danger">6</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a data-toggle="tab" href="#messages">
-                                    待清洗
-                                    <span class="badge badge-danger">8</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a data-toggle="tab" href="#messages">
-                                    已完成
-                                    <span class="badge badge-danger">8</span>
-                                </a>
-                            </li>
-                        </ul>
-
-                        <div class="btn-group pull-right">
-                            <a href="/admin.php?s=rent/create" class="btn btn-white btn-sm btn-primary">下单</a>
-                            <a href="/admin.php?s=rent/fetch" class="btn btn-white btn-sm btn-info">取件</a>
-                            <a href="/admin.php?s=rent/back" class="btn btn-white btn-sm btn-danger">还件</a>
-                            <a href="/admin.php?s=rent/wash" class="btn btn-white btn-sm btn-success">清洗</a>
-                        </div>
+                    <div class="btn-group">
+                        <a href="/admin.php?s=rent/create" class="btn btn-white btn-sm btn-primary">下单</a>
+                        <a href="/admin.php?s=rent/fetch" class="btn btn-white btn-sm btn-info">取件</a>
+                        <a href="/admin.php?s=rent/back" class="btn btn-white btn-sm btn-danger">还件</a>
+                        <a href="/admin.php?s=rent/wash" class="btn btn-white btn-sm btn-success">清洗</a>
                     </div>
-
                     <div class="row">
                     <div class="col-xs-12">
                         <table id="simple-table" class="table  table-bordered table-hover">
@@ -107,16 +66,15 @@
                                         <span class="lbl"></span>
                                     </label>
                                 </th>
-                                <th>ID</th>
+                                <th class="center">操作</th>
                                 <th>订单号</th>
                                 <th>订单状态</th>
                                 <th>客户姓名</th>
                                 <th>联系电话</th>
-                                <th>租赁日期</th>
-                                <th>还件日期</th>
+                                <th class="center">取件日期</th>
+                                <th class="center">还件日期</th>
                                 <th>操作员</th>
                                 <th>创建时间</th>
-                                <th></th>
                             </tr>
                             </thead>
 
@@ -129,16 +87,20 @@
                                         <span class="lbl"></span>
                                     </label>
                                 </td>
-                                <td>{$row.id}</td>
-                                <td>{$row.title}</td>
-                                <td>{$row.status}</td>
-                                <td>{$row.weigh}</td>
-                                <td>
+                                <td class="center">
                                     <div class="hidden-sm hidden-xs btn-group">
-                                        <a class="btn btn-xs btn-success">编辑</a>
-                                        <a class="btn btn-xs btn-danger">删除</a>
+                                        <a class="btn btn-xs btn-success" href="/admin.php?s=rent/edit/id/{$row.id}">编辑</a>
+                                        <a class="btn btn-xs btn-danger" href="/admin.php?s=rent/delete/id/{$row.id}">删除</a>
                                     </div>
                                 </td>
+                                <td>{$row.order_no}</td>
+                                <td>{$row.rent_status}</td>
+                                <td>{$row.realname}</td>
+                                <td>{$row.mobile}</td>
+                                <td class="center">{:substr($row.rent_date, 0, 10)}</td>
+                                <td class="center">{:substr($row.back_date, 0, 10)}</td>
+                                <td>{$row.operate_id}</td>
+                                <td>{$row.createtime}</td>
                             </tr>
 
                             {/foreach}

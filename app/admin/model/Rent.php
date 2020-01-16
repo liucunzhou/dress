@@ -13,4 +13,10 @@ class Rent extends Model
     protected $autoWriteTimestamp = true;
     protected $createTime = 'createtime';
     protected $updateTime = 'updatetime';
+
+    protected $type = [
+        'fetch_date' => 'timestamp',
+        'rent_date' => 'timestamp',
+        'back_date' => 'timestamp',
+    ];
 }
