@@ -133,6 +133,29 @@ class Rent extends Backend
         return json($arr);
     }
 
+    public function read($id)
+    {
+        $where['rent_id'] = $id;
+        $result = $this->rentGoods->where($where)->select();
+        $goodsList = [];
+        foreach ($result as $key => $value) {
+            $map = [];
+            if($value->goods_type == 'dress') {
+                $map['id'] = $value->goods_id;
+                $row = $this->dressModel->where($map)->find()->getData();
+                $row['type'] = 'dress';
+            } else {
+                $map['id'] = $value->goods_id;
+                $row = $this->packageModel->where($map)->find()->getData();
+                $row['type'] = 'package';
+            }
+            $goodsList[] = $row;
+        }
+        View::assign('goodsList', $goodsList);
+
+        return View::fetch();
+    }
+
     /**
      * 租赁排期
      *

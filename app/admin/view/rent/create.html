@@ -48,41 +48,83 @@
                 <form class="form-ajax" method="post" action="admin.php?s=rent/doCreate">
                 <div class="row">
                     <div class="col-xs-6 border-right">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a data-toggle="tab" href="#home">
+                                    <i class="green ace-icon fa fa-home bigger-120"></i>
+                                    基本信息
+                                </a>
+                            </li>
+                        </ul>
                         <table class="table table-striped">
                             <tbody>
                             <tr>
-                                <td width="15%" class="red">客户姓名</td>
-                                <td width="85%">
+                                <td width="15%" class="red">订单编号</td>
+                                <td width="35%">
+                                    <input type="text" name="row[realname]" value="" class="form-control" data-tip="客户姓名">
+                                </td>
+                                <td width="15%" class="red">下单门店</td>
+                                <td width="35%">
                                     <input type="text" name="row[realname]" value="" class="form-control" data-tip="客户姓名">
                                 </td>
                             </tr>
                             <tr>
-                                <td width="15%" class="red">手机号</td>
-                                <td width="85%">
+                                <td width="15%" class="red">男宾姓名</td>
+                                <td width="35%">
+                                    <input type="text" name="row[realname]" value="" class="form-control" data-tip="客户姓名">
+                                </td>
+                                <td width="15%" class="red">女宾姓名</td>
+                                <td width="35%">
+                                    <input type="text" name="row[realname]" value="" class="form-control" data-tip="客户姓名">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="15%" class="red">男宾手机</td>
+                                <td width="35%">
+                                    <input type="text" name="row[mobile]" value="" class="form-control" data-tip="手机号">
+                                </td>
+                                <td width="15%" class="red">女宾手机</td>
+                                <td width="35%">
                                     <input type="text" name="row[mobile]" value="" class="form-control" data-tip="手机号">
                                 </td>
                             </tr>
                             <tr>
-                                <td width="15%" class="red">取件日期</td>
-                                <td width="85%">
+                                <td width="15%" class="red">结婚日期</td>
+                                <td colspan="3">
                                     <input type="text" name="row[rent_date]" value="" class="form-control date" data-tip="手机号">
                                 </td>
                             </tr>
                             <tr>
+                                <td width="15%" class="red">联系地址</td>
+                                <td colspan="3">
+                                    <input type="text" name="row[rent_date]" value="" class="form-control date" data-tip="手机号">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="15%" class="red">取件日期</td>
+                                <td width="35%">
+                                    <input type="text" name="row[rent_date]" value="" class="form-control date" data-tip="手机号">
+                                </td>
                                 <td width="15%" class="red">还件日期</td>
-                                <td width="85%">
+                                <td width="35%">
                                     <input type="text" name="row[back_date]" value="" class="form-control date" data-tip="手机号">
                                 </td>
                             </tr>
-                            <tr>
-                                <td width="15%" class="red">订单总金额</td>
-                                <td width="85%">
-                                    <input type="text" name="row[totals]" value="" class="form-control" data-tip="订单总金额">
-                                </td>
-                            </tr>
+                        </tbody>
+                    </table>
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" href="#home">
+                                <i class="green ace-icon fa fa-gift bigger-120"></i>
+                                付款信息
+                            </a>
+                        </li>
+                    </ul>
+                    <table class="table table-striped">
+                        <tbody>
                             <tr>
                                 <td width="15%" class="red">支付方式</td>
-                                <td width="85%">
+                                <td width="35%">
                                     <select name="row[payment_id]" class="form-control" data-tip="手机号">
                                         <option value="">--选择支付方式--</option>
                                         {foreach name="payments" item="value"}
@@ -90,10 +132,8 @@
                                         {/foreach}
                                     </select>
                                 </td>
-                            </tr>
-                            <tr>
                                 <td width="15%" class="red">支付类型</td>
-                                <td width="85%">
+                                <td width="35%">
                                     <select name="row[pay_type]" class="form-control" data-tip="手机号">
                                         <option value="">--选择支付类型--</option>
                                         <option value="full">全款</option>
@@ -102,14 +142,18 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td width="15%" class="red">订单总金额</td>
+                                <td width="35%">
+                                    <input type="text" name="row[totals]" value="" class="form-control" data-tip="订单总金额">
+                                </td>
                                 <td width="15%" class="red">支付金额</td>
-                                <td width="85%">
+                                <td width="35%">
                                     <input type="text" name="row[pay_money]" value="" class="form-control" data-tip="支付金额">
                                 </td>
                             </tr>
                             <tr>
                                 <td width="15%" class="red">备注信息</td>
-                                <td width="85%">
+                                <td width="35%">
                                     <textarea name="row[remark]" class="form-control"></textarea>
                                 </td>
                             </tr>
