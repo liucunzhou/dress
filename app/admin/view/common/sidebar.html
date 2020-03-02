@@ -2,7 +2,7 @@
     <script type="text/javascript">
         try{ace.settings.loadState('sidebar')}catch(e){}
     </script>
-
+    <!--
     <div class="sidebar-shortcuts" id="sidebar-shortcuts">
         <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
             <button class="btn btn-success">
@@ -32,6 +32,7 @@
             <span class="btn btn-danger"></span>
         </div>
     </div>
+    -->
 
     <ul class="nav nav-list">
         {volist name="menu" id="row"}
@@ -44,7 +45,7 @@
                         <b class="arrow fa fa-angle-down"></b>
                     </a>
                     <b class="arrow"></b>
-                    <ul class="submenu">
+                    <ul class="submenu show">
                         {volist name="row['items']" id="submenu"}
                         <li class="">
                             <a href="admin.php?s={$submenu['name']}">

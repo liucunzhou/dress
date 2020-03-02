@@ -69,15 +69,17 @@
                         <label>租赁日期</label>
                         <input type="text" class="form-control" placeholder="租赁日期">
                     </div>
-                    <button type="submit" class="btn btn-sm btn-success btn-default">搜索</button>
+                    <button type="submit" class="btn btn-default btn-mine">搜索</button>
                 </form>
-                <hr />
+        
+                <div class="space-12"></div>
+                
                 <div class="btn-group">
-                    <a href="/admin.php?s=rent/create" class="btn btn-white btn-sm btn-primary">下单</a>
-                    <a href="/admin.php?s=rent/fetch" class="btn btn-white btn-sm btn-info">取件</a>
-                    <a href="/admin.php?s=rent/back" class="btn btn-white btn-sm btn-danger">还件</a>
-                    <a href="/admin.php?s=rent/wash" class="btn btn-white btn-sm btn-success">清洗</a>
-                    <a href="/admin.php?s=rent/wash" class="btn btn-white btn-sm btn-info">打印收款单</a>
+                    <a href="/admin.php?s=rent/create" class="btn btn-sm btn-mine">下单</a>
+                    <a href="/admin.php?s=rent/fetch" class="btn btn-sm btn-mine">取件</a>
+                    <a href="/admin.php?s=rent/back" class="btn btn-sm btn-mine">还件</a>
+                    <a href="/admin.php?s=rent/wash" class="btn btn-sm btn-mine">清洗</a>
+                    <a href="/admin.php?s=rent/wash" class="btn btn-sm btn-mine">打印收款单</a>
                 </div>
                 <div class="row">
                         <div class="col-xs-12">
@@ -116,9 +118,9 @@
                                     </td>
                                     <td class="center">
                                         <div class="hidden-sm hidden-xs btn-group">
-                                            <a class="btn btn-xs btn-success" href="/admin.php?s=rent/edit/id/{$row.id}">编辑</a>
-                                            <a class="btn btn-xs btn-info" href="/admin.php?s=rent/print/id/{$row.id}">打印</a>
-                                            <a class="btn btn-xs btn-danger" href="/admin.php?s=rent/delete/id/{$row.id}">删除</a>
+                                            <a class="btn btn-xs btn-mine" href="/admin.php?s=rent/edit/id/{$row.id}">编辑</a>
+                                            <a class="btn btn-xs btn-mine" href="/admin.php?s=rent/print/id/{$row.id}">打印</a>
+                                            <a class="btn btn-xs btn-mine" href="/admin.php?s=rent/delete/id/{$row.id}">删除</a>
                                         </div>
                                     </td>
                                     <td>

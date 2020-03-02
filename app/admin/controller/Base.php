@@ -13,7 +13,7 @@ class Base
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $viewPath =  App::getInstance()->getBasePath().'admin/view/';
+        $viewPath =  App::getInstance()->getBasePath().'admin/template/';
         View::config(['view_path' => $viewPath]);
     }
 }

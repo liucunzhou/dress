@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的后台</title>
+    <link rel="stylesheet" href="static/css/system.css">
+    <link rel="stylesheet" href="static/css/black.css">
+</head>
+<body>
+<div class="v-header">
+    <div class="logo">
+        <img src="/static/images/logo.jpg" alt="log">
+    </div>
+</div>
+<div class="v-container">
+    <div class="h-left-side">
+        <ul class="sidebar-menu ">
+            <li class="">
+                <a href="/admin/dashboard?ref=addtabs" addtabs="1" url="/admin/dashboard" py="kzt" pinyin="kongzhitai">
+                    <i class="fa fa-dashboard fa-fw"></i>
+                    <span>控制台</span> <span class="pull-right-container"> <small class="label pull-right bg-blue">hot</small></span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="javascript:;" addtabs="2" url="javascript:;" py="cggl" pinyin="changguiguanli"><i class="fa fa-cogs fa-fw"></i>
+                    <span>常规管理</span> <span class="pull-right-container"> <small class="label pull-right bg-purple">new</small></span></a>
+                <ul class="treeview-menu">
+                    <li class="">
+                        <a href="/admin/general/config?ref=addtabs" addtabs="6" url="/admin/general/config" py="xtpz" pinyin="xitongpeizhi"><i class="fa fa-cog fa-fw"></i>
+                            <span>系统配置</span> <span class="pull-right-container"> </span></a></li>
+                    <li class="">
+                        <a href="/admin/general/attachment?ref=addtabs" addtabs="7" url="/admin/general/attachment" py="fjgl" pinyin="fujianguanli"><i class="fa fa-file-image-o fa-fw"></i>
+                            <span>附件管理</span> <span class="pull-right-container"> </span></a></li>
+                    <li class="">
+                        <a href="/admin/general/profile?ref=addtabs" addtabs="8" url="/admin/general/profile" py="grzl" pinyin="gerenziliao"><i class="fa fa-user fa-fw"></i>
+                            <span>个人资料</span> <span class="pull-right-container"> </span></a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+    <div class="h-main">
+
+    </div>
+</div>
+</body>
+</html>

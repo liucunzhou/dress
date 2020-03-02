@@ -1,0 +1,53 @@
+<div class="h-left-side">
+    <ul class="sidebar-menu">
+        {volist name="menu" id="row"}
+            {if $row['info']['active'] == '1'}
+                <li class="active">
+                    {if isset($row['items'])}
+                    <a href="#" class="dropdown-toggle">
+                        <span class="menu-text">{$row['info']['title']}</span>
+                    </a>
+                    <ul class="submenu">
+                        {volist name="row['items']" id="submenu"}
+                        <li class="">
+                            <a href="admin.php?s={$submenu['name']}">
+                                -
+                                {$submenu.title}
+                            </a>
+                        </li>
+                        {/volist}
+                    </ul>
+                    {else /}
+                    <a href="{:url($row['info']['name'])}" class="dropdown-toggle">
+                        <i class="menu-icon {$row['info']['icon']}"></i>
+                        <span class="menu-text">{$row['info']['title']}</span>
+                    </a>
+                    {/if}
+                </li>
+            {else /}
+                <li>
+                    {if isset($row['items'])}
+                    <a href="#" class="dropdown-toggle">
+                        <span class="menu-text">{$row['info']['title']}</span>
+                    </a>
+                    <ul class="submenu">
+                        {volist name="row['items']" id="submenu"}
+                        <li class="">
+                            <a href="admin.php?s={$submenu['name']}">
+                                -
+                                {$submenu.title}
+                            </a>
+                        </li>
+                        {/volist}
+                    </ul>
+                    {else /}
+                    <a href="{:url($row['info']['name'])}" class="dropdown-toggle">
+                        <i class="menu-icon {$row['info']['icon']}"></i>
+                        <span class="menu-text">{$row['info']['title']}</span>
+                    </a>
+                    {/if}
+                </li>
+            {/if}
+        {/volist}
+    </ul>
+</div>

@@ -15,6 +15,10 @@ class Backend extends Base
     {
         parent::__construct($request);
 
+        $controller = $this->request->controller();
+        $action = $this->request->action();
+        $cpath = strtolower($controller.'/'.$action);
+
         $where = [];
         $where['status'] = 'normal';
         $where['ismenu'] = 1;
@@ -22,10 +26,38 @@ class Backend extends Base
         $menu = [];
         foreach ($rules as $rule) {
             $data = $rule->getData();
+            // $path = strtolower($data['name']);
             if($data['pid'] == 0) {
                 $menu[$data['id']]['info'] = $data;
             } else {
                 $menu[$data['pid']]['items'][] = $data;
+            }
+        }
+
+        
+        foreach($menu as $key=>&$row) {
+            if(!isset($row['info'])) {
+                unset($menu[$key]);
+                continue;
+            }
+
+            $path = strtolower($row['info']['name']);
+            if($cpath == $path) {
+                $row['info']['active'] = 1;
+            } else {
+                $row['info']['active'] = 0;
+            }
+            
+            if(isset($row['items'])) {
+                foreach($row['items'] as &$line) {
+                    $path = strtolower($line['name']);
+                    if($cpath == $path) {
+                        $line['active'] = 1;
+                        $row['info']['active'] = 1;
+                    } else {
+                        $line['active'] = 0;
+                    }
+                }
             }
         }
 
