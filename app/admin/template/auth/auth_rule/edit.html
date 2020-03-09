@@ -27,7 +27,7 @@
                         <tr>
                             <td width="15%">是否菜单</td>
                             <td width="70%">
-                                <select name="row[is_menu]" class="form-control">
+                                <select name="row[ismenu]" class="form-control">
                                     <option value="0" {if $data['ismenu']==0}selected{/if}>否</option>
                                     <option value="1" {if $data['ismenu']==1}selected{/if}>是</option>
                                 </select>
@@ -40,7 +40,7 @@
                                 <select name="row[pid]" class="form-control">
                                     <option value="0">一级菜单</option>
                                     {foreach name="parents" item="value"}
-                                        <option value="1" {if $data['pid']==$value['id']}selected{/if}>{$value.title}</option>
+                                        <option value="{$value.id}" {if $data['pid']==$value['id']}selected{/if}>{$value.title}</option>
                                     {/foreach}
                                 </select>
                             </td>

@@ -64,6 +64,13 @@ Route::post('color/doCreate', 'dictionary.color/doCreate');
 Route::post('color/doEdit', 'dictionary.color/doEdit');
 Route::post('color/delete', 'dictionary.color/delete');
 
+Route::get('store/index', 'dictionary.store/index');
+Route::get('store/create', 'dictionary.store/create');
+Route::get('store/edit', 'dictionary.store/edit');
+Route::post('store/doCreate', 'dictionary.store/doCreate');
+Route::post('store/doEdit', 'dictionary.store/doEdit');
+Route::post('store/delete', 'dictionary.store/delete');
+
 Route::get('payment/index', 'dictionary.payment/index');
 Route::get('payment/create', 'dictionary.payment/create');
 Route::get('payment/edit', 'dictionary.payment/edit');
