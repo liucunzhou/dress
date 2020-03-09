@@ -16,17 +16,17 @@
     <div class="h-main">
         <div class="h-main-header">
             <h1>
-                添加颜色信息
+                添加门店名称
             </h1>
         </div>
 
-        <form class="form-ajax" method="post" action="admin.php?s=color/doCreate">
+        <form class="form-ajax" method="post" action="admin.php?s=store/doEdit">
             <table class="table-form">
                 <tbody>
                     <tr>
-                        <td width="15%">颜色名称</td>
+                        <td width="15%">门店名称</td>
                         <td width="70%">
-                            <input type="text" name="row[title]" value="" class="form-control" data-tip="分类名称">
+                            <input type="text" name="row[title]" value="{$data.title}" class="form-control" data-tip="名称">
                         </td>
                         <td width="15%">必填</td>
                     </tr>
@@ -34,8 +34,8 @@
                         <td width="15%">状态</td>
                         <td width="70%">
                             <select name="row[status]" class="form-control">
-                                <option value="normal">显示</option>
-                                <option value="hidden">隐藏</option>
+                                <option value="normal" {if $data.status=="normal"}selected{/if}>显示</option>
+                                <option value="hidden" {if $data.status=="hidden"}selected{/if}>隐藏</option>
                             </select>
                         </td>
                         <td width="15%"></td>
@@ -43,13 +43,14 @@
                     <tr>
                         <td width="15%">排序</td>
                         <td width="70%">
-                            <input type="text" name="row[weigh]" value="" class="form-control" data-tip="分类排序">
+                            <input type="text" name="row[weigh]" value="{$data.weigh}" class="form-control" data-tip="排序">
                         </td>
                         <td width="15%"></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
+                            <input type="hidden" name="row[id]" value="{$data.id}">
                             <input type="hidden" name="redirect" value="{$_SERVER['HTTP_REFERER']}">
                             <button type="submit" class="submit">立即添加</button>
                             <button type="reset" class="reset"">重置</button>

@@ -35,6 +35,18 @@
                             <td width="15%">必填</td>
                         </tr>
                         <tr>
+                            <td width="15%">选择父级</td>
+                            <td width="70%">
+                                <select name="row[pid]" class="form-control">
+                                    <option value="0">一级菜单</option>
+                                    {foreach name="parents" item="value"}
+                                        <option value="1">{$value.title}</option>
+                                    {/foreach}
+                                </select>
+                            </td>
+                            <td width="15%">必填</td>
+                        </tr>
+                        <tr>
                             <td width="15%">规则名称</td>
                             <td width="70%">
                                 <input type="text" name="row[title]" class="form-control" data-tip="规则名称">
@@ -75,7 +87,6 @@
                         <tr>
                             <td></td>
                             <td>
-                                <input type="hidden" name="row[id]" value="{$data.id}">
                                 <input type="hidden" name="redirect" value="{$_SERVER['HTTP_REFERER']}">
                                 <button type="submit" class="submit">立即添加</button>
                                 <button type="reset" class="reset">重置</button>
