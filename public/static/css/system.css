@@ -288,8 +288,8 @@ html, body {
 /********* table-form start *********/
 .table-header{
 	display: inline-block;
-	height: 55.5px;
-	line-height: 55.5px;
+	height: 50px;
+	line-height: 50px;
 	text-align: center;
 	padding: 0 20px;
 	color: #fff;
