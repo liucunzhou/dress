@@ -6,6 +6,17 @@ body{
     background-size: cover;
     overflow: hidden;
     text-align: center;
+    -webkit-animation: slide-up-down 100S linear;
+    animation: slide-up-down 100S linear;
+}
+
+@keyframes slide-up-down{
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 -100vh;
+    }
 }
 
 .login-logo {

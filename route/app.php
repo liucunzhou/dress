@@ -43,6 +43,9 @@ Route::post('wash/doEdit', 'rent.wash/doEdit');
 Route::post('wash/delete', 'rent.wash/delete');
 
 // dictionary
+Route::get('general/config', 'dictionary.general/config');
+Route::post('general/config', 'dictionary.general/doConfig');
+
 Route::get('source/index', 'dictionary.source/index');
 Route::get('source/create', 'dictionary.source/create');
 Route::get('source/index', 'dictionary.source/edit');
