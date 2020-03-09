@@ -31,7 +31,10 @@
                         <td width="35%">
                             <input type="text" name="row[order_no]" value="{$data.order_no}" class="form-control" data-tip="客户姓名">
                         </td>
-                        <td width="15%" class="red">下单门店</td>
+                        <td width="15%" class="red">
+                            <span class="important">*</span>
+                            下单门店
+                        </td>
                         <td width="35%">
                             <select name="row[store_id]">
                                 <option value="0">--请选择门店--</option>
@@ -40,27 +43,42 @@
                         </td>
                     </tr>
                     <tr>
-                        <td width="15%" class="red">男宾姓名</td>
+                        <td width="15%" class="red">
+                            <span class="important">*</span>
+                            男宾姓名
+                        </td>
                         <td width="35%">
                             <input type="text" name="row[groom]" value="{$data.groom}" class="form-control" data-tip="客户姓名">
                         </td>
-                        <td width="15%" class="red">女宾姓名</td>
+                        <td width="15%" class="red">
+                            <span class="important">*</span>
+                            女宾姓名
+                        </td>
                         <td width="35%">
                             <input type="text" name="row[bride]" value="{$data.bride}" class="form-control" data-tip="客户姓名">
                         </td>
                     </tr>
                     <tr>
-                        <td width="15%" class="red">男宾手机</td>
+                        <td width="15%" class="red">
+                            <span class="important">*</span>
+                            男宾手机
+                        </td>
                         <td width="35%">
                             <input type="text" name="row[groom_mobile]" value="{$data.groom_mobile}" class="form-control" data-tip="手机号">
                         </td>
-                        <td width="15%" class="red">女宾手机</td>
+                        <td width="15%" class="red">
+                            <span class="important">*</span>
+                            女宾手机
+                        </td>
                         <td width="35%">
                             <input type="text" name="row[bride_mobile]" value="{$data.groom_mobile}" class="form-control" data-tip="手机号">
                         </td>
                     </tr>
                     <tr>
-                        <td width="15%" class="red">结婚日期</td>
+                        <td width="15%" class="red">
+                            <span class="important">*</span>
+                            结婚日期
+                        </td>
                         <td colspan="3">
                             <input type="text" name="row[marry_date]" value="{$data.marry_date}" class="form-control date" data-tip="手机号">
                         </td>
@@ -83,19 +101,26 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="space-20"></div>
             <div class="table-header">
                 付款信息
             </div>
                 <table class="table-form">
                     <tbody>
                     <tr>
-                        <td width="15%" class="red">订单总金额</td>
+                        <td width="15%" class="red">
+                            <span class="important">*</span>
+                            订单总金额
+                        </td>
                         <td width="85%">
                             <input type="text" name="row[totals]" value="{$data['totals']}" class="form-control" data-tip="订单总金额">
                         </td>
                     </tr>
                     <tr>
-                        <td width="15%" class="red">支付方式</td>
+                        <td width="15%" class="red">
+                            <span class="important">*</span>
+                            支付方式
+                        </td>
                         <td width="85%">
                             <select name="row[payment_id]" class="form-control" data-tip="手机号">
                                 <option value="">--选择支付方式--</option>
@@ -106,7 +131,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td width="15%" class="red">支付类型</td>
+                        <td width="15%" class="red">
+                            <span class="important">*</span>
+                            支付类型
+                        </td>
                         <td width="85%">
                             <select name="row[pay_type]" class="form-control" data-tip="手机号">
                                 <option value="">--选择支付类型--</option>
@@ -117,7 +145,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td width="15%" class="red">支付金额</td>
+                        <td width="15%" class="red">
+                            <span class="important">*</span>
+                            支付金额
+                        </td>
                         <td width="85%">
                             <input type="text" name="row[pay_money]" value="" class="form-control" data-tip="支付金额">
                         </td>

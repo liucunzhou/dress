@@ -288,8 +288,8 @@ html, body {
 /********* table-form start *********/
 .table-header{
 	display: inline-block;
-	height: 44px;
-	line-height: 44px;
+	height: 55.5px;
+	line-height: 55.5px;
 	text-align: center;
 	padding: 0 20px;
 	color: #fff;
@@ -370,7 +370,7 @@ html, body {
 	text-align: center;
 	letter-spacing: 6px;
 	color: #fff;
-	background-color: #548291;
+	background-color: #549166;
 	border: none;
 	padding: 0 20px;
 	margin: 12px 0;
@@ -524,3 +524,12 @@ html, body {
 	background-color: #549166;
 }
 /********* media end *********/
+
+/********* tools start *********/
+.important{
+	color: red;
+}
+.space-20{
+	height: 20px;
+}
+/********* tools end *********/
