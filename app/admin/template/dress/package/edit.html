@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <title>礼服系统</title>
+    <meta name="description" content="overview &amp; stats"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    {include file="common/meta"}
+</head>
+
+<body class="no-skin">
+{include file="common/v-header"}
+<div class="v-container">
+    {include file="common/h-left-side"}
+    <div class="h-main">
+        <div class="h-main-header">
+            <h1>
+                添加礼服套餐
+            </h1>
+        </div>
+        <form class="form-ajax" method="post" action="admin.php?s=package/doEdit">
+            <table class="table-form">
+                <tbody>
+                    <tr>
+                        <td width="15%" class="red">套餐编号</td>
+                        <td width="70%">
+                            <input type="text" name="row[package_no]" value="{$data.package_no}" class="form-control" data-tip="套餐编号">
+                        </td>
+                        <td width="15%">必填</td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="red">套餐名称</td>
+                        <td width="70%">
+                            <input type="text" name="row[title]" value="{$data.title}" class="form-control" data-tip="套餐名称">
+                        </td>
+                        <td width="15%">必填</td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="red">出租价格</td>
+                        <td width="70%">
+                            <input type="text" name="row[rent_price]" value="{$data.rent_price}" class="form-control" data-tip="出租价格">
+                        </td>
+                        <td width="15%">必填</td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="red">出售价格</td>
+                        <td width="70%">
+                            <input type="text" name="row[sale_price]" value="{$data.sale_price}" class="form-control" data-tip="出售价格">
+                        </td>
+                        <td width="15%">必填</td>
+                    </tr>
+                    <tr>
+                        <td width="15%">状态</td>
+                        <td width="70%">
+                            <select name="row[status]" class="form-control">
+                                <option value="normal" {if $data.status=="normal"}selected{/if}>显示</option>
+                                <option value="hidden" {if $data.status=="hidden"}selected{/if}>隐藏</option>
+                            </select>
+                        </td>
+                        <td width="15%"></td>
+                    </tr>
+                    <tr>
+                        <td width="15%">排序</td>
+                        <td width="70%">
+                            <input type="text" name="row[weigh]" value="{$data.weigh}" class="form-control" data-tip="排序">
+                        </td>
+                        <td width="15%"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="hidden" name="row[id]" value="{$data.id}">
+                            <input type="hidden" name="redirect" value="{$_SERVER['HTTP_REFERER']}">
+                            <button type="submit" class="submit">立即添加</button>
+                            <button type="reset" class="reset">重置</button>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

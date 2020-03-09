@@ -4,20 +4,32 @@ declare (strict_types = 1);
 namespace app\admin\controller;
 
 use app\admin\model\AuthRule;
+use app\middleware\Auth;
 use think\facade\View;
 use think\Request;
+use think\facade\Session;
 
 class Backend extends Base
 {
+    protected $user = [];
     protected $model = '';
+    protected $middleware = [Auth::class];
 
     public function __construct(Request $request)
     {
         parent::__construct($request);
+        $this->user = Session::get('user');
+        View::assign('user', $this->user);
 
-        $controller = $this->request->controller();
-        $action = $this->request->action();
-        $cpath = strtolower($controller.'/'.$action);
+        $rule = $this->request->rule();
+        $cpath = $rule->getRule();
+        if(empty($cpath)) {
+            $controller = $this->request->controller();
+            $action = $this->request->action();
+            $cpath = strtolower($controller . '/' . $action);
+        } else {
+            $cpath = strtolower($cpath);
+        }
 
         $where = [];
         $where['status'] = 'normal';
@@ -136,9 +148,7 @@ class Backend extends Base
     public function edit($id)
     {
         $row = $this->model->find($id);
-        $data = $row->getData();
-
-        View::assign('data', $data);
+        View::assign('data', $row);
 
         return View::fetch();
     }
@@ -154,7 +164,6 @@ class Backend extends Base
         $params = $this->request->param();
 
         $row = $this->model->find($params['row']['id']);
-
         $result = $row->save($params['row']);
         if ($result) {
             $arr = [
@@ -192,7 +201,21 @@ class Backend extends Base
      */
     public function delete($id)
     {
-        //
+        $row = $this->model->find($id);
+        $result = $row->delete();
+        if ($result) {
+            $arr = [
+                'code'  => '200',
+                'msg'   => '删除成功',
+            ];
+        } else {
+            $arr = [
+                'code'  => '500',
+                'msg'   => '删除是啊比',
+            ];
+        }
+
+        return json($arr);
     }
 
     /**

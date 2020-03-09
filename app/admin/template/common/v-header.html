@@ -1,37 +1,59 @@
 <div class="v-header">
     <div class="logo">
-        <img src="/static/images/logo.jpg" alt="log">
+        <img src="/static/images/aoliweiya.png" alt="log">
     </div>
 
     <div class="top-menu">
 
-        <a href="">
-            <dl>
-                <dd class="en">Hello!</dd>
-                <dd class="zh">管理员</dd>
-            </dl>
-        </a>
+        <div class="top-menu-item user-options-box">
+            <div class="user-options">
+                <img src="/static/images/avatars/avatar3.png" alt="" class="avatar">
+                <dl class>
+                    <dd class="en left">Hello!</dd>
+                    <dd class="zh left">{$user.nickname}</dd>
+                </dl>
+            </div>
+            <ul class="user-options-list">
+                <li>
+                    <a href="/admin.php?s=user/info">个人中心</a>
+                </li>
+                <li>
+                    <a href="/admin.php?s=user/repassword">修改密码</a>
+                </li>
+                <li>
+                    <a href="/admin.php?s=passport/logout">退出登陆</a>
+                </li>
+            </ul>
+        </div>
 
-        <a href="">
+        <div class="top-menu-item">
             <dl>
                 <dd class="en">DRESS IDLE</dd>
-                <dd class="zh">礼服档期</dd>
+                <dd class="zh">
+                    <a href="/admin.php?s=rent/schedule">
+                        礼服档期
+                    </a>
+                </dd>
             </dl>
-        </a>
+        </div>
 
-        <a href="">
+        <div class="top-menu-item">
             <dl>
                 <dd class="en">DRESS SELL</dd>
-                <dd class="zh">礼服出售</dd>
+                <dd class="zh">
+                    <a href="/admin.php?s=sale/create">礼服出售</a>
+                </dd>
             </dl>
-        </a>
+        </div>
 
-        <a href="">
+        <div class="top-menu-item">
             <dl>
                 <dd class="en">DRESS Rent</dd>
-                <dd class="zh">礼服出租</dd>
+                <dd class="zh">
+                    <a href="/admin.php?s=rent/create">礼服出租</a>
+                </dd>
             </dl>
-        </a>
+        </div>
 
     </div>
 </div>

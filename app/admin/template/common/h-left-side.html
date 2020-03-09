@@ -5,6 +5,7 @@
                 <li class="active">
                     {if isset($row['items'])}
                     <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon {$row['info']['icon']}"></i>
                         <span class="menu-text">{$row['info']['title']}</span>
                     </a>
                     <ul class="submenu">
@@ -28,6 +29,7 @@
                 <li>
                     {if isset($row['items'])}
                     <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon {$row['info']['icon']}"></i>
                         <span class="menu-text">{$row['info']['title']}</span>
                     </a>
                     <ul class="submenu">

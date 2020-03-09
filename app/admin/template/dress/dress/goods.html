@@ -1,0 +1,22 @@
+<div class="media search-media">
+    <div class="media-left">
+        <a href="#">
+            <img class="media-object" data-src="holder.js/72x72" alt="72x72" src="{$data.images}">
+        </a>
+    </div>
+
+    <div class="media-body">
+        <div class="media-main">
+            <h4 class="media-heading">
+                <a href="#" class="blue">{$data.title}</a>
+            </h4>
+            <p class="media-intro">商品描述</p>
+        </div>
+
+        <div class="search-actions">
+            <div class="price">{$data.rent_price}</div>
+            <input type="hidden" name="dress[]" value="{$data.id}">
+            <a href="javascript:void(0);" class="btn btn-delete-media"  data-action="/admin.php?s=rent/removeGoods" data-goods-id="{$data.id}" data-goods-type="dress">删除</a>
+        </div>
+    </div>
+</div>

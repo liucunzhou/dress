@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>礼服系统</title>
+    <meta name="description" content="overview &amp; stats" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    {include file="common/meta"}
+</head>
+
+<body class="no-skin">
+    {include file="common/v-header"}
+    <div class="v-container">
+        {include file="common/h-left-side"}
+        <div class="h-main">
+
+            <div class="h-main-header">
+                <h1>
+                    编辑权限
+                </h1>
+            </div>
+            <form class="form-ajax" method="post" action="admin.php?s=AuthRule/doCreate">
+                <table class="table-form">
+                    <tbody>
+                        <tr>
+                            <td width="15%">是否菜单</td>
+                            <td width="70%">
+                                <select name="row[is_menu]" class="form-control">
+                                    <option value="0">否</option>
+                                    <option value="1">是</option>
+                                </select>
+                            </td>
+                            <td width="15%">必填</td>
+                        </tr>
+                        <tr>
+                            <td width="15%">规则名称</td>
+                            <td width="70%">
+                                <input type="text" name="row[title]" class="form-control" data-tip="规则名称">
+                            </td>
+                            <td width="15%">必填</td>
+                        </tr>
+                        <tr>
+                            <td width="15%">规则路由</td>
+                            <td width="70%">
+                                    <input type="text" name="row[name]" class="form-control" data-tip="规则路由">
+                            </td>
+                            <td width="15%">必填</td>
+                        </tr>
+                        <tr>
+                            <td width="15%">ICON</td>
+                            <td width="70%">
+                                    <input type="text" name="row[icon]" class="form-control" data-tip="菜单的ICON">
+                            </td>
+                            <td width="15%">必填</td>
+                        </tr>
+                        <tr>
+                            <td width="15%">状态</td>
+                            <td width="70%">
+                                <select name="row[status]" class="form-control">
+                                    <option value="normal">上线</option>
+                                    <option value="hidden">下线</option>
+                                </select>
+                            </td>
+                            <td width="15%">必填</td>
+                        </tr>
+                        <tr>
+                            <td width="15%">排序</td>
+                            <td width="70%">
+                                        <input type="text" name="row[weigh]" class="form-control" data-tip="排序">
+                            </td>
+                            <td width="15%">默认为“0”</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="hidden" name="row[id]" value="{$data.id}">
+                                <input type="hidden" name="redirect" value="{$_SERVER['HTTP_REFERER']}">
+                                <button type="submit" class="submit">立即添加</button>
+                                <button type="reset" class="reset">重置</button>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

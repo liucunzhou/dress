@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <title>礼服系统</title>
+    <meta name="description" content="overview &amp; stats"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    {include file="common/meta"}
+    <style>
+        .border-right {
+            border-right: 1px solid #dedede;
+        }
+    </style>
+</head>
+
+<body class="no-skin">
+{include file="common/v-header"}
+<div class="v-container">
+    {include file="common/h-left-side"}
+    <div class="h-main">
+        <form class="form-ajax form-flex" method="post" action="admin.php?s=rent/doEdit">
+            <div class="form-flex-left">
+                <div class="table-header">
+                    基本信息
+                </div>
+                <table class="table-form">
+                    <tbody>
+                    <tr>
+                        <td width="15%" class="red">订单编号</td>
+                        <td width="35%">
+                            <input type="text" name="row[order_no]" value="{$data.order_no}" class="form-control" data-tip="客户姓名">
+                        </td>
+                        <td width="15%" class="red">下单门店</td>
+                        <td width="35%">
+                            <select name="row[store_id]">
+                                <option value="0">--请选择门店--</option>
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="red">男宾姓名</td>
+                        <td width="35%">
+                            <input type="text" name="row[groom]" value="{$data.groom}" class="form-control" data-tip="客户姓名">
+                        </td>
+                        <td width="15%" class="red">女宾姓名</td>
+                        <td width="35%">
+                            <input type="text" name="row[bride]" value="{$data.bride}" class="form-control" data-tip="客户姓名">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="red">男宾手机</td>
+                        <td width="35%">
+                            <input type="text" name="row[groom_mobile]" value="{$data.groom_mobile}" class="form-control" data-tip="手机号">
+                        </td>
+                        <td width="15%" class="red">女宾手机</td>
+                        <td width="35%">
+                            <input type="text" name="row[bride_mobile]" value="{$data.groom_mobile}" class="form-control" data-tip="手机号">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="red">结婚日期</td>
+                        <td colspan="3">
+                            <input type="text" name="row[marry_date]" value="{$data.marry_date}" class="form-control date" data-tip="手机号">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="red">联系地址</td>
+                        <td colspan="3">
+                            <input type="text" name="row[address]" value="{$data.address}" class="form-control" data-tip="手机号">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="red">取件日期</td>
+                        <td width="35%">
+                            <input type="text" name="row[fetch_date]" value="{$data.fetch_date}" class="form-control date" data-tip="手机号">
+                        </td>
+                        <td width="15%" class="red">还件日期</td>
+                        <td width="35%">
+                            <input type="text" name="row[return_date]" value="{$data.return_date}" class="form-control date" data-tip="手机号">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-header">
+                付款信息
+            </div>
+                <table class="table-form">
+                    <tbody>
+                    <tr>
+                        <td width="15%" class="red">订单总金额</td>
+                        <td width="85%">
+                            <input type="text" name="row[totals]" value="{$data['totals']}" class="form-control" data-tip="订单总金额">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="red">支付方式</td>
+                        <td width="85%">
+                            <select name="row[payment_id]" class="form-control" data-tip="手机号">
+                                <option value="">--选择支付方式--</option>
+                                {foreach name="payments" item="value"}
+                                <option value="{$value.id}">{$value.title}</option>
+                                {/foreach}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="red">支付类型</td>
+                        <td width="85%">
+                            <select name="row[pay_type]" class="form-control" data-tip="手机号">
+                                <option value="">--选择支付类型--</option>
+                                <option value="full">全款</option>
+                                <option value="earnest">定金</option>
+                                <option value="tail">尾款</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="red">支付金额</td>
+                        <td width="85%">
+                            <input type="text" name="row[pay_money]" value="" class="form-control" data-tip="支付金额">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="red">备注信息</td>
+                        <td width="85%">
+                            <textarea name="row[remark]" class="form-control">{$data.remark}</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="hidden" name="row[id]" id="id" value="{$data.id}">
+                            <input type="hidden" name="redirect" value="{$_SERVER['HTTP_REFERER']}">
+                            <button type="submit" class="submit">立即保存</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-flex-right order-rent-right">
+                <div class="order-goods-box">
+                    <table class="table-form">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <select id="goods-type" class="form-control">
+                                    <option value="goods">礼服</option>
+                                    <option value="package">套餐</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" id="keyword" class="form-control" placeholder="商品唯一码" data-tip="商品唯一码">
+                            </td>
+                            <td width="15%">
+                                <a href="javascript:void(0);" class="btn fetch-goods" data-action="/admin.php?s=Ajax/readSource">新增产品</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="select-goods-list">
+                        {foreach name="goodsList" item="goods"}
+                            {if $goods['type']=='dress'}
+                            <div class="media search-media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object" data-src="holder.js/72x72" alt="72x72" src="{$goods.images}">
+                                    </a>
+                                </div>
+                            
+                                <div class="media-body">
+                                    <div class="media-main">
+                                        <h4 class="media-heading">
+                                            <a href="#" class="blue">{$goods.title}</a>
+                                        </h4>
+                                        <p class="media-intro">商品描述</p>
+                                    </div>
+                            
+                                    <div class="search-actions">
+                                        <div class="price">{$goods.rent_price}</div>
+                                        <input type="hidden" name="dress[]" value="{$goods.id}">
+                                        <a href="javascript:void(0);" class="btn btn-delete-media" data-action="/admin.php?s=rent/removeGoods" data-goods-id="{$goods.id}" data-goods-type="dress">
+                                            删除
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {else /}
+
+                            {/if}
+                        {/foreach}
+                    </div>
+                </div>
+                <div class="order-payment-box">
+                    <table class="table-list">
+                        <thead>
+                            <tr>
+                                <th>操作员</th>
+                                <th>支付日期</th>
+                                <th>支付方式</th>
+                                <th>支付类型</th>
+                                <th>支付金额</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach name="payList" item="value"}
+                                <tr>
+                                    <th>{$value['operator_id']}</th>
+                                    <th>{$value.createtime}</th>
+                                    <th>{$payments[$value['payment_id']]['title']}</th>
+                                    <th>{$paytypes[$value['pay_type']]}</th>
+                                    <th>{$value['pay_money']}</th>
+                                    <th></th>
+                                </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(function(){
+        $("#goods-type").change(function () {
+            var current = $(this).val();
+            if(current != 'goods') {
+                $("#keyword").autocomplete({
+                    source: package
+                });
+            } else {
+                $("#keyword").autocomplete({
+                    source: dress
+                });
+
+            }
+        });
+
+        $(".fetch-goods").click(function(){
+            var url = $(this).attr("data-action");
+            var id = $("#id").val();
+            var type = $("#goods-type").val();
+            var keyword = $("#keyword").val();
+
+            if(keyword == '') {
+                alert('请输入商品编码');
+                return false;
+            }
+
+            var data = {
+                rent_id: id == undefined ? 0 : id,
+                type : type,
+                keyword : keyword
+            };
+            
+            $.post(url, data, function (res) {
+                if(res == '') {
+                    layer.msg('未找到该商品');
+                } else if (res == '1') {
+                    layer.msg('该商品已在商品列表中');
+                } else {
+                    $(".select-goods-list").append(res);
+                }
+            })
+        });
+
+        $(document).on('click', ".btn-delete-media", function () {
+            if(!confirm('确定要删除该商品')) {
+                return false;
+            }
+
+            var _ = $(this);
+            var id = $("#id").val();
+            if(id==undefined) {
+                $(this).parents('.search-media').remove();
+            } else {
+                var url = $(this).attr("data-action");
+                var goods_id = $(this).attr('data-goods-id');
+                var goods_type = $(this).attr('data-goods-type');
+                var data = {
+                    rent_id : id,
+                    goods_id : goods_id,
+                    goods_type : goods_type
+                };
+                
+                $.post(url, data, function (res) {
+                    if(res.code == '200') {
+                        _.parents('.search-media').remove();
+                    } else  {
+                        alert('未找到该商品');
+                    }
+                })
+            }
+        })
+    });
+</script>
+</body>
+</html>

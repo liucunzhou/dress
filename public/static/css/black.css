@@ -8,10 +8,13 @@ body{
 .v-header .top-menu {
 	
 }
-.v-header .top-menu a{
+.v-header .top-menu div.top-menu-item{
 	color: #fff;
 	background-color: #2f2f2f;
 	border-right: 1px solid #131313;
+}
+.v-header .top-menu div.top-menu-item a{
+	color: #fff;
 }
 .v-container .h-left-side ul li a.dropdown-toggle {
 	background-color: #373737;

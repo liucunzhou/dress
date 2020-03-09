@@ -9,11 +9,14 @@ use think\Request;
 
 class Base
 {
+    protected $loginUrl = '/admin.php?s=passport/login';
     protected $request;
+
     public function __construct(Request $request)
     {
         $this->request = $request;
         $viewPath =  App::getInstance()->getBasePath().'admin/template/';
+        // $viewPath =  App::getInstance()->getBasePath().'admin/view/';
         View::config(['view_path' => $viewPath]);
     }
 }

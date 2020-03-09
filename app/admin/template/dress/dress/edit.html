@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>礼服系统</title>
+    <meta name="description" content="overview &amp; stats" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    {include file="common/meta"}
+</head>
+
+<body class="no-skin">
+{include file="common/v-header"}
+<div class="v-container">
+    {include file="common/h-left-side"}
+    <div class="h-main">
+    <div class="h-main-header">
+        <h1>编辑礼服</h1>
+    </div>
+    <form class="form-ajax" method="post"action="admin.php?s=Dress/doEdit">
+        <table class="table-form">
+            <tbody>
+                <tr>
+                    <td width="15%">礼服分类</td>
+                    <td width="50%">
+                        <select name="row[category_id]" class="form-control">
+                            <option value="0">---请选择分类--</option>
+                            {foreach name="dressCategories" item="value"}
+                                <option value="{$value.id}" {if $data['category_id']==$value['id']}selected{/if}>{$value.title}</option>
+                            {/foreach}
+                        </select>
+                    </td>
+                    <td width="35%">必选</td>
+                </tr>
+                <tr>
+                    <td>礼服名称</td>
+                    <td>
+                        <input type="text" name="row[title]" value="{$data.title}" class="form-control" data-tip="分类名称"/>
+                    </td>
+                    <td>必填</td>
+                </tr>
+                <tr>
+                    <td>礼服图集</td>
+                    <td>
+                        <div class="upload-box">
+                            <input type="text" name="row[images]" value="{$data.images}" class="form-control-images" data-tip="分类名称"/>
+                            <div class="btn upload" id="upload-dress" data-field="dress">上传</div>
+                        </div>
+                        <div class="images-box">
+
+                        </div>
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>SKU码</td>
+                    <td>
+                        <input type="text" name="row[sku]" value="{$data.sku}" class="form-control" data-tip="SKU码"/>
+                    </td>
+                    <td>唯一,必填</td>
+                </tr>
+                <tr>
+                    <td>租赁价格</td>
+                    <td>
+                        <input type="text" name="row[rent_price]" value="{$data.rent_price}" class="form-control" data-tip="租赁价格" />
+                    </td>
+                    <td>必填</td>
+                </tr>
+                <tr>
+                    <td>销售价格</td>
+                    <td>
+                            <input type="text" name="row[sale_price]" value="{$data.sale_price}" class="form-control" data-tip="销售价格"/>
+                    </td>
+                    <td>必填</td>
+                </tr>
+                <tr>
+                    <td>尺码</td>
+                    <td>
+                        <select name="row[size_id]" class="form-control">
+                            <option value="0">---请选择尺码--</option>
+                            {foreach name="sizes" item="value"}
+                                <option value="{$value.id}" {if $data['size_id']==$value['id']}selected{/if}>{$value.title}</option>
+                            {/foreach}
+                        </select>
+                    </td>
+                    <td>必选</td>
+                </tr>
+                <tr>
+                    <td>颜色</td>
+                    <td>
+                        <select name="row[color_id]" class="form-control">
+                            <option value="0">---请选择颜色--</option>
+                            {foreach name="colors" item="value"}
+                                <option value="{$value.id}" {if $data['color_id']==$value['id']}selected{/if}>{$value.title}</option>
+                            {/foreach}
+                        </select>
+                    </td>
+                    <td>必选</td>
+                </tr>
+                <tr>
+                    <td>供应商</td>
+                    <td>
+                        <select name="row[supplier_id]" class="form-control">
+                            <option value="0">---请选择供应商--</option>
+                            {foreach name="suppliers" item="value"}
+                                <option value="{$value.id}" {if $data['supplier_id']==$value['id']}selected{/if}>{$value.title}</option>
+                            {/foreach}
+                        </select>
+                    </td>
+                    <td>必选</td>
+                </tr>
+                <tr>
+                    <td>排序</td>
+                    <td>
+                        <input type="text" name="row[weigh]" value="{$data.weigh}" class="form-control" data-tip="分类排序" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="hidden" name="row[id]" value="{$data.id}">
+                        <input type="hidden" name="redirect" value="{$_SERVER['HTTP_REFERER']}"/>
+                        <button type="submit" class="submit">立即保存</button>
+                        <button type="reset" class="reset">重置</button>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    </div>
+</div>
+</body>
+</html>

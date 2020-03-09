@@ -15,8 +15,8 @@ class Rent extends Model
     protected $updateTime = 'updatetime';
 
     protected $type = [
+        'marry_date' => 'timestamp',
         'fetch_date' => 'timestamp',
-        'rent_date' => 'timestamp',
-        'back_date' => 'timestamp',
+        'return_date' => 'timestamp',
     ];
 }

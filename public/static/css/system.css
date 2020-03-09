@@ -18,39 +18,94 @@ html, body {
 .v-header{
 	flex: 0 75px;
 	display: flex;
-	overflow: hidden;
 }
 .v-header .logo {
 	flex: 0 230px;
 	height: 75px;
+	line-height: 75px;
 	text-align: center;
 	font-size: 0;
 }
 .v-header .logo img {
-	height: 100%;
+	width: 100%;
+	vertical-align: middle;
 }
 .v-header .top-menu{
 	flex: 1;
 	height: 100%;
 }
-.v-header .top-menu a{
+.v-header .top-menu .top-menu-item{
+	position: relative;
+	display: flex;
 	float: right;
 	height: 100%;
-	width: 160px;
 	padding:0 20px;
 	text-align: center;
-	position: relative;
+	align-items: center;
+	align-content: center;
 }
-.v-header .top-menu a dl{
-	display: block;
+.v-header .top-menu .top-menu-item .user-options{
+	display: flex;
+	align-items: center;
+	align-content: center;
+	padding-right: 42px;
+}
+
+.v-header .top-menu .top-menu-item.user-options-box::after{
+	content: " ";
 	position: absolute;
+	width: 18px;
+	height: 9px;
+	right: 22px;
 	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translateY(-50%);
+	background: url('/static/images/triangle-down.png') no-repeat;
 }
-.v-header .top-menu a dl dd {
+
+.v-header .top-menu .top-menu-item.user-options-box:hover::after{
+	background: url('/static/images/triangle-up.png') no-repeat;
+}
+
+.v-header .top-menu .top-menu-item.user-options-box .user-options-list{
+	display: none;
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 75px;
+}
+.v-header .top-menu .top-menu-item.user-options-box:hover .user-options-list{
+	display: block;
+}
+.v-header .top-menu .top-menu-item.user-options-box .user-options-list li {
+	width: 100%;
+	height: 44px;
+	line-height: 44px;
+	color: #fff;
+	text-align: center;
+	background-color: #727272;
+	border-bottom: 1px solid #1d1d1d;
+}
+.v-header .top-menu .top-menu-item.user-options-box .user-options-list li:last-child{
+	border-bottom: none;
+}
+.v-header .top-menu .top-menu-item.user-options-box .user-options-list li a {
+	color: #fff;
+}
+
+.v-header .top-menu .top-menu-item .avatar{
+	border: 2px solid #8ce3ff;
+	border-radius: 24px;
+}
+.v-header .top-menu .top-menu-item dl{
+	flex: 1;
+}
+.v-header .top-menu .top-menu-item .user-options dl{
+	padding-left: 12px;
+}
+.v-header .top-menu .top-menu-item dl dd {
 	white-space: nowrap;
 }
+
 .v-container {
 	flex: 1;
 	display: flex;
@@ -59,11 +114,9 @@ html, body {
 }
 .v-container .h-left-side {
 	flex: 0 230px;
-	overflow: scroll;
+	overflow: auto;
 }
-.v-container .h-left-side ul {
 
-}
 .v-container .h-left-side ul,
 .v-container .h-left-side ul > li {
 	list-style: none;
@@ -71,13 +124,14 @@ html, body {
 .v-container .h-left-side ul li a {
 	color: #fff;
 	text-decoration: none;
-	padding:0 2em;
+	padding: 0 16px;
 }
 .v-container .h-left-side ul li a.dropdown-toggle {
 	position: relative;
 	display: block;
 	height: 82px;
 	line-height: 82px;
+	font-size: 16px;
 }
 
 .v-container .h-left-side ul li.active a.dropdown-toggle::after{
@@ -111,36 +165,51 @@ html, body {
 	border-bottom: none;
 }
 
-.v-container .h-left-side::-webkit-scrollbar {
+
+.form-flex-right .order-goods-box::-webkit-scrollbar,
+.form-flex-right .order-payment-box::-webkit-scrollbar,
+.v-container .h-left-side::-webkit-scrollbar,
+.v-container .h-main.with-scroll::-webkit-scrollbar {
 	width: 1px;
 	height: 1px;
 }
 
-.v-container .h-left-side::-webkit-scrollbar-thumb {
+.form-flex-right .order-goods-box::-webkit-scrollbar-thumb,
+.form-flex-right .order-payment-box::-webkit-scrollbar-thumb,
+.v-container .h-left-side::-webkit-scrollbar-thumb,
+.v-container .h-main.with-scroll::-webkit-scrollbar-thumb {
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-	background: #535353;
 }
 
-.v-container .h-left-side::-webkit-scrollbar-track {
+.form-flex-right .order-goods-box::-webkit-scrollbar-track,
+.form-flex-right .order-payment-box::-webkit-scrollbar-track,
+.v-container .h-left-side::-webkit-scrollbar-track,
+.v-container .h-main.with-scroll::-webkit-scrollbar-track {
 	-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
 	border-radius: 10px;
-	background: #535353;
 }
 
 
 .v-container .h-main{
 	flex: 1;
 	padding: 20px 40px;
+	background-color: #000;
+}
+
+.v-container .h-main.with-scroll{
+	overflow-y: auto;
 }
 
 /********* h-main start *********/
 .h-main .h-main-header h1{
-	font-size: 44px;
+	font-size: 28px;
 	color: #8ce3ff;
-	margin-bottom: 44px;
+	margin-bottom: 32px;
 }
-
+.h-main .h-main-header h1 small a {
+	color: #8ce3ff;
+}
 /********* h-main end *********/
 
 /********* common start *********/
@@ -171,14 +240,23 @@ html, body {
 }
 .table-list tbody tr th,
 .table-list tbody tr td{
-	padding: 13px 12px;
+	padding: 5px 12px;
 	background-color: #1d1d1d;
+}
+.table-list tbody tr td a {
+	color: #fff;
+}
+
+.table-list tr td img {
+	text-align: center;
+	max-height: 100px;
 }
 /********* table-list end *********/
 
 /********* form-flex start **********/
 .form-flex {
 	display: flex;
+	height: 100%;
 }
 .form-flex-left,
 .form-flex-right{
@@ -189,6 +267,21 @@ html, body {
 }
 .form-flex-right{
 	padding-left: 28px;
+}
+.form-flex-right.order-rent-right{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+.form-flex-right .order-goods-box{
+	flex: 0 70%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.form-flex-right .order-payment-box{
+	flex: 1;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 /********* form-flex end **********/
 
@@ -212,25 +305,53 @@ html, body {
 }
 .table-form tbody tr th,
 .table-form tbody tr td{
-	padding: 0 12px;
+	padding: 3px 12px;
 }
+
 .table-form input {
 	width: 100%;
-	height: 44px;
-	line-height: 44px;
+	height: 34px;
+	line-height: 34px;
 	padding-left: 12px;
 	font-size: 14px;
 	color: #fff;
-	background-color: #727272;
+	background-color: #727272!important;
 	border:none;
+	outline: none;
 }
+.table-form .upload-box{
+	display: flex;
+}
+.table-form input.form-control-images{
+	flex: 0 80%;
+}
+.table-form .btn.upload{
+	flex: 1;
+	height: 34px;
+	line-height: 34px;
+	text-align: center;
+	color: #fff;
+}
+
+.table-form .images-box img{ 
+	max-height: 100px;
+}
+
+.table-form textarea{
+	color: #fff;
+	margin: 8px 0;
+	border:none;
+	background-color: #727272;
+}
+
+.table-form textarea:focus,
 .table-form input:focus{
 	border: none;
 	outline: none;
 }
 .table-form select{
 	width: 100%;
-	height: 44px;
+	height: 34px;
 	border: none;
 	border-radius: 0;
 	-webkit-border-radius: 0px;
@@ -244,8 +365,8 @@ html, body {
 }
 .table-form .submit{
 	display: inline-block;
-	height: 52px;
-	line-height: 52px;
+	height: 44px;
+	line-height: 44px;
 	text-align: center;
 	letter-spacing: 6px;
 	color: #fff;
@@ -259,8 +380,8 @@ html, body {
 }
 .table-form .reset{
 	display: inline-block;
-	height: 52px;
-	line-height: 52px;
+	height: 44px;
+	line-height: 44px;
 	text-align: center;
 	letter-spacing: 6px;
 	color: #fff;
@@ -341,11 +462,12 @@ html, body {
 .fetch-goods{
 	display: block;
 	width: 100%;
-	height: 44px;
-	line-height: 44px;
+	height: 34px;
+	line-height: 34px;
 	text-align: center;
 	color: #fff;
 	background-color: #548291;
+	border: none;
 }
 /********* btn end *********/
 
@@ -368,6 +490,7 @@ html, body {
 .media .media-body {
 	flex: 1;
 	display: flex;
+	width: auto;
 }
 .media .media-body .media-main {
 	flex: 1;
