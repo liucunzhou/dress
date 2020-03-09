@@ -300,12 +300,11 @@ html, body {
 	color: #fff;
 }
 .table-form tbody tr:nth-child(odd){
-	height: 55px;
 	background-color: #1d1d1d;
 }
 .table-form tbody tr th,
 .table-form tbody tr td{
-	padding: 3px 12px;
+	padding: 8px 12px;
 }
 
 .table-form input {
