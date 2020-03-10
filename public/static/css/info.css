@@ -205,3 +205,7 @@
 .item {
   padding: 30px 0;
 }
+
+.row.row-sm.stats-container .col-xs-6 {
+  padding: 21px 12px;
+}

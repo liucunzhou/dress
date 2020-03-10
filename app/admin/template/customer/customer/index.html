@@ -18,7 +18,7 @@
             <h1>
                 我的客资
                 <small>
-                    <a class="ace-icon fa fa-plus" href="/admin.php?s=customer/create">添加</a>
+                    <a class="ace-icon fa fa-plus-square" href="/admin.php?s=customer/create" title="添加客资"></a>
                 </small>
             </h1>
         </div>
@@ -32,14 +32,17 @@
                             <span class="lbl"></span>
                         </label>
                     </th>
-                    <th>ID</th>
-                    <th>录入者</th>
-                    <th>回访数</th>
-                    <th>客资来源</th>
-                    <th>客户姓名</th>
-                    <th>联系电话</th>
-                    <th>性别</th>
-                    <th>创建时间</th>
+                    <th class="center">ID</th>
+                    <th class="center">录入者</th>
+                    <th class="center">回访数</th>
+                    <th class="center">客资来源</th>
+                    <th class="center">客户姓名</th>
+                    <th class="center">联系电话</th>
+                    <th class="center">其他号码1</th>
+                    <th class="center">其他号码2</th>
+                    <th class="center">其他号码3</th>
+                    <th class="center">性别</th>
+                    <th class="center">创建时间</th>
                     <th></th>
                 </tr>
             </thead>
@@ -50,17 +53,20 @@
                         <td class="center">
                             <input type="checkbox" class="ace" />
                         </td>
-                        <td>{$row.id}</td>
-                        <td>{$row.operate_id}</td>
-                        <td>
-                            <a href="/admin.php?s=visit/add/id/{$row.id}">{$row.visit_times}</a>
+                        <td class="center">{$row.id}</td>
+                        <td class="center">{$row.operate_id}</td>
+                        <td class="center">
+                            <a class="underline layui-right-side" data-action="/admin.php?s=visit/add/id/{$row.id}" title="回访客资">{$row.visit_times}</a>
                         </td>
-                        <td>{$sources[$row['source_id']]['title']}</td>
-                        <td>{$row.realname}</td>
-                        <td>{$row.mobile}</td>
-                        <td>{$row.sex}</td>
-                        <td>{$row.createtime}</td>
-                        <td>
+                        <td class="center">{$sources[$row['source_id']]['title']}</td>
+                        <td class="center">{$row.realname}</td>
+                        <td class="center">{$row.mobile}</td>
+                        <td class="center">{$row.mobile1}</td>
+                        <td class="center">{$row.mobile2}</td>
+                        <td class="center">{$row.mobile3}</td>
+                        <td class="center">{$row.sex}</td>
+                        <td class="center">{$row.createtime}</td>
+                        <td class="center">
                             <div class="btn-group">
                                 <a class="btn" href="/admin.php?s=customer/edit/id/{$row.id}">编辑</a>
                                 <a class="btn btn-delete" href="javascript:void(0);" data-href="/admin.php?s=customer/delete/id/{$row.id}">删除</a>

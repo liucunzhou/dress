@@ -142,3 +142,11 @@ Route::get('supplier/create', 'dress.supplier/create');
 Route::get('supplier/edit', 'dress.supplier/edit');
 Route::post('supplier/doCreate', 'dress.supplier/doCreate');
 Route::post('supplier/doEdit', 'dress.supplier/doEdit');
+
+// customer
+Route::get('customer/index', 'customer.customer/index');
+Route::get('customer/create', 'customer.customer/create');
+Route::get('customer/edit', 'customer.customer/edit');
+Route::post('customer/doCreate', 'customer.customer/doCreate');
+Route::post('customer/doEdit', 'customer.customer/doEdit');
+Route::get('customer/delete', 'customer.customer/delete');
