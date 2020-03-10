@@ -2,8 +2,8 @@ body{
     position: relative;
     width: 100%;
     height: vh;
-    background-image: url('http://qiniu.reactphp.club/1.jpg'),url('http://qiniu.reactphp.club/2.jpg');
-    background-size: cover;
+    background-image: url('http://qiniu.reactphp.club/3.jpg'),url('http://qiniu.reactphp.club/3.jpg');
+    background-size: cover,cover;
     overflow: hidden;
     text-align: center;
     -webkit-animation: slide-up-down 100S linear;
