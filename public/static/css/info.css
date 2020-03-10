@@ -1,6 +1,8 @@
 .sm-st {
+  position: relative;
   background: #fff;
   padding: 20px;
+  padding-bottom: 42px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -9,10 +11,24 @@
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.05);
 }
 
+.sm-st a.more {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  text-align: left;
+  left: 0px;
+  bottom: 0;
+  padding-left: 20px;
+  color: #fff;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
 .sm-st-icon {
+  display: inline-block;
   width: 60px;
   height: 60px;
-  display: inline-block;
   line-height: 60px;
   text-align: center;
   font-size: 30px;
@@ -20,20 +36,23 @@
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  float: left;
   margin-right: 10px;
   color: #fff;
+  float: left;
 }
 
 .sm-st-info {
   font-size: 12px;
   padding-top: 2px;
+  color: #fff;
+  text-align: right;
 }
-
-.sm-st-info span {
-  display: block;
-  font-size: 24px;
-  font-weight: 600;
+.sm-st-info dt {
+  font-size: 16px;
+  padding-bottom: 12px;
+}
+.sm-st-info dd {
+  font-size: 14px;
 }
 
 .orange {
@@ -80,6 +99,10 @@
   margin-bottom: 5px;
 }
 
+.count-try-dress{
+  background-color: #3498dc;
+}
+
 .st-red {
   background-color: #F05050;
 }
@@ -88,12 +111,24 @@
   background-color: #27C24C;
 }
 
+.count-rent-fetch{
+  background-color: #568ebf;
+}
+
 .st-violet {
   background-color: #7266ba;
 }
 
+.count-rent-return{
+  background-color: #e45a5a;
+}
+
 .st-blue {
   background-color: #23b7e5;
+}
+
+.count-sale-fetch {
+  background-color: #45b7af;
 }
 
 .stats .stat-icon {

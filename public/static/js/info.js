@@ -36,9 +36,6 @@ $(function () {
       name: '成交量',
       type: 'line',
       smooth: true,
-      areaStyle: {
-        normal: {}
-      },
       lineStyle: {
         normal: {
           width: 1.5
@@ -50,9 +47,6 @@ $(function () {
       name: '订单量',
       type: 'line',
       smooth: true,
-      areaStyle: {
-        normal: {}
-      },
       lineStyle: {
         normal: {
           width: 1.5
