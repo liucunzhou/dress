@@ -1,19 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>个人中心</title>
-    {include file="common/meta"}
+  <meta charset="UTF-8">
+  <title>个人中心</title>
+  <link rel="stylesheet" href="/static/css/info.css">
+  {include file="common/meta"}
+
+  <script>
+    var Orderdata = {
+        column: ["2020-03-03","2020-03-04","2020-03-05","2020-03-06","2020-03-07","2020-03-08","2020-03-09"],
+        paydata: [28,3,2,10,70,10,69],
+        createdata: [160,33,71,179,193,183,173],
+    };
+  </script>
+  <script src="/static/js/echarts.min.js"></script>
+  <script src="/static/js/echarts-dark.js"></script>
+  <script src="/static/js/info.js"></script>
 </head>
+
 <body>
-{include file="common/v-header"}
-<div class="v-container">
+  {include file="common/v-header"}
+  <div class="v-container">
     {include file="common/h-left-side"}
     <div class="h-main">
       <div class="h-main-header">
         <h1>个人中心</h1>
+        <div id="mine">
+          <div class="row">
+            <div class="col-sm-3 col-xs-6">
+              <div class="sm-st clearfix">
+                <span class="sm-st-icon st-red"><i class="fa fa-users"></i></span>
+                <div class="sm-st-info">
+                  <span>35200</span>
+                  今日试衣量
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+              <div class="sm-st clearfix">
+                <span class="sm-st-icon st-violet"><i class="fa fa-book"></i></span>
+                <div class="sm-st-info">
+                  <span>219390</span>
+                  出租应取件
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+              <div class="sm-st clearfix">
+                <span class="sm-st-icon st-blue"><i class="fa fa-shopping-bag"></i></span>
+                <div class="sm-st-info">
+                  <span>32143</span>
+                  出租应还件
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+              <div class="sm-st clearfix">
+                <span class="sm-st-icon st-green"><i class="fa fa-cny"></i></span>
+                <div class="sm-st-info">
+                  <span>174800</span>
+                  定制应还件 
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-30"></div>
+
+          <div class="row">
+            <div class="col-lg-8">
+              <div id="echart" style="height:200px;width:100%;"></div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card sameheight-item stats">
+                <div class="card-block">
+                  <div class="row row-sm stats-container">
+                    <div class="col-xs-6 stat-col">
+                      <div class="stat-icon"><i class="fa fa-rocket"></i></div>
+                      <div class="stat">
+                        <div class="value"> 430</div>
+                        <div class="name"> 今日注册</div>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width: 30%"></div>
+                      </div>
+                    </div>
+                    <div class="col-xs-6 stat-col">
+                      <div class="stat-icon"><i class="fa fa-shopping-cart"></i></div>
+                      <div class="stat">
+                        <div class="value"> 321</div>
+                        <div class="name"> 今日登录</div>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width: 25%"></div>
+                      </div>
+                    </div>
+                    <div class="col-xs-6  stat-col">
+                      <div class="stat-icon"><i class="fa fa-line-chart"></i></div>
+                      <div class="stat">
+                        <div class="value"> 2324</div>
+                        <div class="name"> 今日订单</div>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width: 25%"></div>
+                      </div>
+                    </div>
+                    <div class="col-xs-6  stat-col">
+                      <div class="stat-icon"><i class="fa fa-users"></i></div>
+                      <div class="stat">
+                        <div class="value"> 132</div>
+                        <div class="name"> 未处理订单</div>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width: 25%"></div>
+                      </div>
+                    </div>
+                    <div class="col-xs-6  stat-col">
+                      <div class="stat-icon"><i class="fa fa-list-alt"></i></div>
+                      <div class="stat">
+                        <div class="value"> 80%</div>
+                        <div class="name"> 七日新增</div>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width: 25%"></div>
+                      </div>
+                    </div>
+                    <div class="col-xs-6 stat-col">
+                      <div class="stat-icon"><i class="fa fa-dollar"></i></div>
+                      <div class="stat">
+                        <div class="value"> 32%</div>
+                        <div class="name"> 七日活跃</div>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width: 25%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-</div>
+  </div>
 </body>
+
 </html>
