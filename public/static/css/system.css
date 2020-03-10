@@ -106,6 +106,53 @@ html, body {
 	white-space: nowrap;
 }
 
+/***************** *************************/
+.v-brumbs{
+	flex: 0 44px;
+	display: flex;
+}
+
+.v-brumbs .h-brumbs-left{
+	flex: 0 230px;
+}
+
+.v-brumbs .h-brumbs-right{
+	flex: 1;
+}
+
+.v-brumbs .h-brumbs-right ul{
+	padding: 0 40px;
+}
+
+.v-brumbs .h-brumbs-right ul li{
+	position: relative;
+	display: inline-block;
+	height: 44px;
+	line-height: 44px;
+	padding: 0 20px 0 8px;
+}
+
+.v-brumbs .h-brumbs-right ul li a {
+	color: #fff;
+}
+
+.v-brumbs .h-brumbs-right ul li a.home{
+	color: #8ce3ff;
+}
+
+.v-brumbs .h-brumbs-right ul li::after {
+	content: ">";
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: #fff;
+}
+
+.v-brumbs .h-brumbs-right ul li:last-child::after{
+	content: '';
+}
+
+/************* v-container ******************/
 .v-container {
 	flex: 1;
 	display: flex;
@@ -126,6 +173,7 @@ html, body {
 	text-decoration: none;
 	padding: 0 16px;
 }
+.v-container .h-left-side ul li a.dropdown,
 .v-container .h-left-side ul li a.dropdown-toggle {
 	position: relative;
 	display: block;

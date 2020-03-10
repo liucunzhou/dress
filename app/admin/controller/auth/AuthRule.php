@@ -16,7 +16,7 @@ class AuthRule extends Backend
 
         $where = [];
         $where['pid'] = 0;
-        $parents = $this->model->where($where)->column('id,pid,title');
+        $parents = $this->model->where($where)->order('weigh desc')->column('id,pid,title');
         View::assign('parents', $parents);
     }
 
@@ -27,8 +27,9 @@ class AuthRule extends Backend
     public function index()
     {
         $where = [];
+        $where['pid'] = 0;
         $where['status'] = 'normal';
-        $rows = $this->model->where($where)->select();
+        $rows = $this->model->where($where)->order('weigh desc')->select();
         View::assign('rows', $rows);
 
         return View::fetch();

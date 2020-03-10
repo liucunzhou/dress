@@ -16,6 +16,7 @@ body{
 .v-header .top-menu div.top-menu-item a{
 	color: #fff;
 }
+.v-container .h-left-side ul li a.dropdown,
 .v-container .h-left-side ul li a.dropdown-toggle {
 	background-color: #373737;
 	border-bottom: 1px solid #282828;

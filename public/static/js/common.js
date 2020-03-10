@@ -1,8 +1,12 @@
 $(function(){
     $(".sidebar-menu li").bind({
         click : function() {
-            $(".sidebar-menu li").removeClass("active");
-            $(this).addClass("active");
+            if($(this).hasClass("active")) {
+                $(".sidebar-menu li").removeClass("active");            
+            } else {
+                $(".sidebar-menu li").removeClass("active");            
+                $(this).addClass("active");
+            }
         }
     });
 
