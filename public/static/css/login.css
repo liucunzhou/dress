@@ -2,7 +2,7 @@ body{
     position: relative;
     width: 100%;
     height: vh;
-    background-image: url('http://q6jxbpr71.bkt.clouddn.com/login-bg.png'),url('http://q6jxbpr71.bkt.clouddn.com/login-bg.png');
+    background-image: url('http://qiniu.reactphp.club/1.jpg'),url('http://qiniu.reactphp.club/2.jpg');
     background-size: cover;
     overflow: hidden;
     text-align: center;
