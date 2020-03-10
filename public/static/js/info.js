@@ -11,7 +11,7 @@ $(function () {
       trigger: 'axis'
     },
     legend: {
-      data: ['成交量', '订单量']
+      data: ['实收金额', '套系金额']
     },
     toolbox: {
       show: false,
@@ -33,7 +33,7 @@ $(function () {
       bottom: 30
     }],
     series: [{
-      name: '成交量',
+      name: '实收金额',
       type: 'line',
       smooth: true,
       lineStyle: {
@@ -44,7 +44,7 @@ $(function () {
       data: Orderdata.paydata
     },
     {
-      name: '订单量',
+      name: '套系金额',
       type: 'line',
       smooth: true,
       lineStyle: {
@@ -78,11 +78,11 @@ $(function () {
         data: Orderdata.column
       },
       series: [{
-        name: '成交量',
+        name: '实收金额',
         data: Orderdata.paydata
       },
       {
-        name: '订单量',
+        name: '套系金额',
         data: Orderdata.createdata
       }]
     });
