@@ -92,5 +92,15 @@ $(function(){
                 }
             });
         })
-      });
+    });
+
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        laydate.render({ 
+            elem: '#daterange'
+            ,type: 'date'
+            ,range: '~' //或 range: '~' 来自定义分割字符
+        });
+    });
 })

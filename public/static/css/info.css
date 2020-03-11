@@ -209,3 +209,28 @@
 .row.row-sm.stats-container .col-xs-6 {
   padding: 5px 12px;
 }
+
+.date-range-group {
+  color: #fff;
+  margin-bottom: 12px;
+}
+.date-range-group label {
+  padding: 0 8px;
+}
+
+.date-range-group label input[type="radio"] {
+  position: relative;
+  top: 4px;
+  height: 16px;
+  width: 16px;
+}
+.date-range-group label input[type="radio"]:checked {
+  background-color: orange;
+}
+
+.date-range-group input[type='text'] {
+  color: #333;
+  border: none;
+  outline: none;
+  padding: 3px 12px;
+}

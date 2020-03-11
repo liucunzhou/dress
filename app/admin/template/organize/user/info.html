@@ -26,6 +26,21 @@
     <div class="h-main">
       <div class="h-main-header">
         <h1>控制台</h1>
+        <div class="date-range-group text-right">
+          <label>
+            <input type="radio" name="daterange" value="today" checked> 今日
+          </label>
+          <label>
+            <input type="radio" name="daterange" value="yestoday"> 昨日
+          </label>
+          <label>
+            <input type="radio" name="daterange" value="week"> 近7日
+          </label>
+          <label>
+            <input type="radio" name="daterange" value="customize"> 自定义
+          </label>
+          <input type="text" name="customize" id="daterange" value="{:date('Y-m-d')} ~ {:date('Y-m-d', time() + 86400)}">
+        </div>
         <div id="mine">
           <div class="row">
             <div class="col-sm-3 col-xs-6">
