@@ -42,7 +42,10 @@ class Rent extends Backend
             'restore'   => '已完成'
         ];
         View::assign('statusText', $statusText);
-
+        
+        $storeModel = new \app\admin\model\Store();
+        $this->stores = $storeModel->order('weigh desc')->column('id,title,weigh', 'id');
+        View::assign('stores', $this->stores);
 
         $this->model = new \app\admin\model\Rent();
         $this->dressModel = new \app\admin\model\Dress();
