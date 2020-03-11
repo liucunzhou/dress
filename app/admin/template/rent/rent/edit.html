@@ -39,9 +39,11 @@
                             下单门店
                         </td>
                         <td width="35%">
-                            <select name="row[store_id]">
+                            <select name="row[store_id]" class="form-control">
                                 <option value="0">--请选择门店--</option>
-                                <option value=""></option>
+                                {foreach name="stores" item="item"}
+                                <option value="{$item.id}" {if $data['store_id']==$item['id']}selected{/if}>{$item.title}</option>
+                                {/foreach}
                             </select>
                         </td>
                     </tr>
