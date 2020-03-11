@@ -17,9 +17,6 @@
         <div class="h-main-header">
             <h1>
                 我的客资
-                <small>
-                    <a class="ace-icon fa fa-plus-square" href="/admin.php?s=customer/create" title="添加客资"></a>
-                </small>
             </h1>
         </div>
 
@@ -33,14 +30,12 @@
                         </label>
                     </th>
                     <th class="center">ID</th>
-                    <th class="center">录入者</th>
                     <th class="center">回访数</th>
+                    <th class="center">回访状态</th>
                     <th class="center">客资来源</th>
                     <th class="center">客户姓名</th>
                     <th class="center">联系电话</th>
-                    <th class="center">其他号码1</th>
-                    <th class="center">其他号码2</th>
-                    <th class="center">其他号码3</th>
+                    <th class="center">微信号</th>
                     <th class="center">性别</th>
                     <th class="center">创建时间</th>
                     <th></th>
@@ -54,17 +49,16 @@
                             <input type="checkbox" class="ace" />
                         </td>
                         <td class="center">{$row.id}</td>
-                        <td class="center">{$row.operate_id}</td>
+                        <td class="center">{$row.status}</td>
                         <td class="center">
                             <a class="underline layui-right-side" data-action="/admin.php?s=visit/add/id/{$row.id}" title="回访客资">{$row.visit_times}</a>
                         </td>
+                        <td class="center">{$row.status}</td>
                         <td class="center">{$sources[$row['source_id']]['title']}</td>
                         <td class="center">{$row.realname}</td>
                         <td class="center">{$row.mobile}</td>
                         <td class="center">{$row.mobile1}</td>
-                        <td class="center">{$row.mobile2}</td>
-                        <td class="center">{$row.mobile3}</td>
-                        <td class="center">{$row.sex}</td>
+                        <td class="center">{$row.sex?'男':'女'}</td>
                         <td class="center">{$row.createtime}</td>
                         <td class="center">
                             <div class="btn-group">

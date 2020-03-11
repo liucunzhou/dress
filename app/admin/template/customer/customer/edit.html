@@ -16,7 +16,7 @@
     <div class="h-main">
         <div class="h-main-header">
             <h1>
-                添加客资
+                编辑客资
             </h1>
         </div>
 
@@ -24,12 +24,27 @@
             <table class="table-form">
                 <tbody>
                     <tr>
-                        <td width="15%">客户来源</td>
+                        <td>咨询门店</td>
+                        <td>
+                            <select name="row[store_id]]" class="form-control">
+                                <option value="0">--请选择门店--</option>
+                                {foreach name="sources" item="item"}
+                                    <option value="{$item.id}" {if $data['sex']==$item['id']}selected{/if}>{$item.title}</option>
+                                {/foreach}
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td width="15%">
+                            <span class="important">*</span>
+                            客户来源
+                        </td>
                         <td width="70%">
                             <select name="row[source_id]" class="form-control">
                                 <option value="0">--请选择来源--</option>
                                 {foreach name="sources" item="item"}
-                                    <option value="{$item.id}">{$item.title}</option>
+                                    <option value="{$item.id}" {if $data['sex']==$item['id']}selected{/if}>{$item.title}</option>
                                 {/foreach}
                             </select>
                         </td>
@@ -39,57 +54,46 @@
                     <tr>
                         <td width="15%">客户姓名</td>
                         <td width="70%">
-                            <input type="text" name="row[realname]" value="" class="form-control" data-tip="支付方式">
+                            <input type="text" name="row[realname]" value="{$data.realname}" class="form-control" data-tip="支付方式">
                         </td>
-                        <td width="15%">必填</td>
+                        <td width="15%"></td>
                     </tr>
 
                     <tr>
-                        <td width="15%">联系电话</td>
-                        <td width="70%">
-                            <input type="text" name="row[mobile]" value="" class="form-control" data-tip="联系电话">
+                        <td width="15%">
+                            <span class="important">*</span>
+                            联系电话
                         </td>
-                        <td width="15%">必填</td>
-                    </tr>
-
-                    
-                    <tr>
-                        <td width="15%">其他号码1</td>
                         <td width="70%">
-                            <input type="text" name="row[mobile1]" value="" class="form-control" data-tip="其他号码1">
+                            <input type="text" value="{$data.mobile}" class="form-control" data-tip="联系电话">
                         </td>
                         <td width="15%">必填</td>
                     </tr>
 
                     
                     <tr>
-                        <td width="15%">其他号码2</td>
+                        <td width="15%">微信号</td>
                         <td width="70%">
-                            <input type="text" name="row[mobile2]" value="" class="form-control" data-tip="其他号码2">
-                        </td>
-                        <td width="15%">必填</td>
-                    </tr>
-
-                    <tr>
-                        <td width="15%">其他号码3</td>
-                        <td width="70%">
-                            <input type="text" name="row[mobile3]]" value="" class="form-control" data-tip="其他号码3">
-                        </td>
-                        <td width="15%">必填</td>
-                    </tr>
-
-                    <tr>
-                        <td width="15%">备注</td>
-                        <td width="70%">
-                            <textarea name="row[remark]" class="form-control" data-tip="分类排序"></textarea>
+                            <input type="text" name="row[mobile1]" value="{$data.mobile1}" class="form-control" data-tip="其他号码1">
                         </td>
                         <td width="15%"></td>
                     </tr>
                     
                     <tr>
-                        <td width="15%">排序</td>
+                        <td width="15%">性别</td>
                         <td width="70%">
-                            <input type="text" name="row[weigh]" value="" class="form-control" data-tip="分类排序">
+                            <select name="row[sex]" class="form-control">
+                                <option value="0" {if $data['sex']=='0'}selected{/if}>女</option>
+                                <option value="1" {if $data['sex']=='1'}selected{/if}>男</option>
+                            </select>
+                        </td>
+                        <td width="15%"></td>
+                    </tr>
+
+                    <tr>
+                        <td width="15%">备注</td>
+                        <td width="70%">
+                            <textarea name="row[remark]" class="form-control" data-tip="备注信息">{$data.remark}</textarea>
                         </td>
                         <td width="15%"></td>
                     </tr>
@@ -97,9 +101,9 @@
                     <tr>
                         <td></td>
                         <td>
+                            <input type="hidden" name="row[id]" value="{$data.id}" />
                             <input type="hidden" name="redirect" value="{$_SERVER['HTTP_REFERER']}">
                             <button type="submit" class="submit">立即添加</button>
-                            <button type="reset" class="reset">重置</button>
                         </td>
                         <td></td>
                     </tr>

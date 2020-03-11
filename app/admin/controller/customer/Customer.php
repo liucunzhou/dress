@@ -31,7 +31,7 @@ class Customer extends Backend
         return View::fetch();
     }
 
-    public function today()
+    public function promoter()
     {
         $where['status'] = 'normal';
         $rows = $this->model->where($where)->select();

@@ -144,6 +144,7 @@ Route::post('supplier/doCreate', 'dress.supplier/doCreate');
 Route::post('supplier/doEdit', 'dress.supplier/doEdit');
 
 // customer
+Route::get('customer/promoter', 'customer.customer/promoter');
 Route::get('customer/index', 'customer.customer/index');
 Route::get('customer/create', 'customer.customer/create');
 Route::get('customer/edit', 'customer.customer/edit');
