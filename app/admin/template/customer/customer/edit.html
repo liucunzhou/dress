@@ -20,16 +20,16 @@
             </h1>
         </div>
 
-        <form class="form-ajax" method="post" action="admin.php?s=customer/doCreate">
+        <form class="form-ajax" method="post" action="admin.php?s=customer/doEdit">
             <table class="table-form">
                 <tbody>
                     <tr>
                         <td>咨询门店</td>
                         <td>
-                            <select name="row[store_id]]" class="form-control">
+                            <select name="row[store_id]" class="form-control">
                                 <option value="0">--请选择门店--</option>
-                                {foreach name="sources" item="item"}
-                                    <option value="{$item.id}" {if $data['sex']==$item['id']}selected{/if}>{$item.title}</option>
+                                {foreach name="stores" item="item"}
+                                    <option value="{$item.id}" {if $data['store_id']==$item['id']}selected{/if}>{$item.title}</option>
                                 {/foreach}
                             </select>
                         </td>
@@ -44,7 +44,7 @@
                             <select name="row[source_id]" class="form-control">
                                 <option value="0">--请选择来源--</option>
                                 {foreach name="sources" item="item"}
-                                    <option value="{$item.id}" {if $data['sex']==$item['id']}selected{/if}>{$item.title}</option>
+                                    <option value="{$item.id}" {if $data['source_id']==$item['id']}selected{/if}>{$item.title}</option>
                                 {/foreach}
                             </select>
                         </td>
@@ -103,7 +103,7 @@
                         <td>
                             <input type="hidden" name="row[id]" value="{$data.id}" />
                             <input type="hidden" name="redirect" value="{$_SERVER['HTTP_REFERER']}">
-                            <button type="submit" class="submit">立即添加</button>
+                            <button type="submit" class="submit">保存修改</button>
                         </td>
                         <td></td>
                     </tr>

@@ -26,14 +26,13 @@
                     <th class="center" width="20">
                         <input type="checkbox" class="ace" />
                     </th>
-                    <th>ID</th>
-                    <th>录入者</th>
-                    <th>回访数</th>
-                    <th>客资来源</th>
-                    <th>客户姓名</th>
-                    <th>联系电话</th>
-                    <th>性别</th>
-                    <th>创建时间</th>
+                    <th class="center">ID</th>
+                    <th class="center">回访数</th>
+                    <th class="center">客资来源</th>
+                    <th class="center">客户姓名</th>
+                    <th class="center">联系电话</th>
+                    <th class="center">性别</th>
+                    <th class="center">创建时间</th>
                     <th></th>
                 </tr>
             </thead>
@@ -44,14 +43,15 @@
                         <td class="center">
                             <input type="checkbox" class="ace" />
                         </td>
-                        <td>{$row.id}</td>
-                        <td>{$row.operate_id}</td>
-                        <td>{$row.visit_times}</td>
-                        <td>{$row.source_id}</td>
-                        <td>{$row.realname}</td>
-                        <td>{$row.mobile}</td>
-                        <td>{$row.sex}</td>
-                        <td>{$row.createtime}</td>
+                        <td class="center">{$row.id}</td>
+                        <td class="center">
+                            <a class="underline layui-right-side" href="javascript:void(0);" data-action="/admin.php?s=visit/add/id/{$row.id}" title="回访客资">{$row.visit_times}</a>
+                        </td>
+                        <td class="center">{$sources[$row['source_id']]['title']}</td>
+                        <td class="center">{$row.realname}</td>
+                        <td class="center">{$row.mobile}</td>
+                        <td class="center">{$row.sex?'女':'男'}</td>
+                        <td class="center">{$row.createtime}</td>
                         <td>
                             <div class="hidden-sm hidden-xs btn-group">
                                 <a class="btn" href="/admin.php?s=customer/edit/id/{$row.id}">编辑</a>

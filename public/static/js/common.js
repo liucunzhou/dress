@@ -15,7 +15,13 @@ $(function(){
         var url = $(this).attr('data-action');
         var title = $(this).attr('title');
         var height = window.innerHeight;
-        var width = window.innerWidth * 0.6;
+        var percent = $(this).attr("data-width");
+        if(percent != undefined) {
+            percent = parseInt(percent)/100;
+        } else {
+            percent = 0.6;
+        }
+        var width = window.innerWidth * percent;
 
         layer.open({
             type: 2,
@@ -37,7 +43,12 @@ $(function(){
         var data = $(this).serialize();
         $.post(url, data, function (res) {
             if(res.code == '200') {
-                window.location.href = res.redirect;
+                if(res.redirect == 'dialog') {
+                    parent.layer.closeAll();
+                    parent.window.location.reload();
+                } else {
+                    window.location.reload(res.redirect);
+                }
             } else {
                 alert(res.msg);
             }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <title>礼服系统</title>
+    <meta name="description" content="overview &amp; stats"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    {include file="common/meta"}
+</head>
+
+<body class="no-skin">
+<div class="space-30"></div>
+<form class="form-ajax form-right-side" method="post" action="admin.php?s=visit/doCreate">
+    <table class="table-form">
+        <tbody>
+            <tr>
+                <td width="20%">回访状态</td>
+                <td width="80%">
+                    <select name="row[status]" class="form-control">
+                        <option value="normal">--选择回访状态--</option>
+                        {foreach name="statuses" item="value"}
+                            <option value="{$value}">{$value}</option>
+                        {/foreach}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>回访备注</td>
+                <td>
+                    <textarea name="row[remark]"></textarea>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="space-30"></div>
+    <div class="table-header">
+        历史回访({:$visits->count()})
+    </div>
+    <table class="table-list">
+        <theader>
+            <tr>
+                <th>日期</th>
+                <th>回访状态</th>
+                <th>回访者</th>
+                <th>备注</th>
+            </tr>
+        </theader>
+        <tbody>
+            {foreach name="visits" item="value"}
+                <tr>
+                    <td>{$value.createtime}</td>
+                    <td>{$value.status=='normal'?'未跟进':$value.status}</td>
+                    <td>{$users[$value['user_id']]['realname']}</td>
+                    <td>{$value.remark}</td>
+                </tr>
+            {/foreach}
+        </tbody>
+    </table>
+    <div class="right-side-bottom">
+        <input type="hidden" name="row[user_id]" value="{$user.id}" />
+        <input type="hidden" name="row[customer_id]" value="{$customer.id}" />
+        <input type="hidden" name="customer_id" value="{$customer.id}" />
+        <input type="hidden" name="redirect" value="dialog" />
+        <button type="submit" class="submit">添加回访</button>
+    </div>
+</form>
+</html>

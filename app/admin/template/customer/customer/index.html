@@ -30,6 +30,7 @@
                         </label>
                     </th>
                     <th class="center">ID</th>
+                    <th></th>
                     <th class="center">回访数</th>
                     <th class="center">回访状态</th>
                     <th class="center">客资来源</th>
@@ -38,7 +39,6 @@
                     <th class="center">微信号</th>
                     <th class="center">性别</th>
                     <th class="center">创建时间</th>
-                    <th></th>
                 </tr>
             </thead>
 
@@ -49,23 +49,23 @@
                             <input type="checkbox" class="ace" />
                         </td>
                         <td class="center">{$row.id}</td>
-                        <td class="center">{$row.status}</td>
                         <td class="center">
-                            <a class="underline layui-right-side" data-action="/admin.php?s=visit/add/id/{$row.id}" title="回访客资">{$row.visit_times}</a>
+                            <div class="btn-group">
+                                <a class="btn layui-right-side" href="javascript:void(0);" data-action="/admin.php?s=visit/create/customer_id/{$row.id}" title="回访客资" data-width="30">回访</a>
+                                <a class="btn" href="/admin.php?s=customer/edit/id/{$row.id}">编辑</a>
+                                <a class="btn btn-delete" href="javascript:void(0);" data-href="/admin.php?s=customer/delete/id/{$row.id}">删除</a>
+                            </div>
                         </td>
-                        <td class="center">{$row.status}</td>
+                        <td class="center">
+                            <a class="underline layui-right-side" href="javascript:void(0);" data-action="/admin.php?s=visit/add/id/{$row.id}" title="回访历史">{$row.visit_times}</a>
+                        </td>
+                        <td class="center">{$row.status=='normal'?'未跟进':$row.status}</td>
                         <td class="center">{$sources[$row['source_id']]['title']}</td>
                         <td class="center">{$row.realname}</td>
                         <td class="center">{$row.mobile}</td>
                         <td class="center">{$row.mobile1}</td>
                         <td class="center">{$row.sex?'男':'女'}</td>
                         <td class="center">{$row.createtime}</td>
-                        <td class="center">
-                            <div class="btn-group">
-                                <a class="btn" href="/admin.php?s=customer/edit/id/{$row.id}">编辑</a>
-                                <a class="btn btn-delete" href="javascript:void(0);" data-href="/admin.php?s=customer/delete/id/{$row.id}">删除</a>
-                            </div>
-                        </td>
                     </tr>
                 {/foreach}
             </tbody>

@@ -8,10 +8,12 @@ use app\middleware\Auth;
 use think\facade\View;
 use think\Request;
 use think\facade\Session;
+use think\exception\ValidateException;
 
 class Backend extends Base
 {
     protected $user = [];
+    protected $validate = '';
     protected $model = '';
     protected $middleware = [Auth::class];
 
@@ -85,7 +87,7 @@ class Backend extends Base
     public function index()
     {
         $where['status'] = 'normal';
-        $rows = $this->model->where($where)->select();
+        $rows = $this->model->where($where)->order('weigh desc')->select();
         View::assign('rows', $rows);
 
         return View::fetch();
@@ -110,6 +112,17 @@ class Backend extends Base
     public function doCreate()
     {
         $params = $this->request->param();
+        $failMsg = '添加失败';
+        if (!empty($this->validate)) {
+   
+            try {
+                // $this->validate->check($params['row']);
+            } catch (ValidateException $e) {
+                // 验证失败 输出错误信息
+                // dump($e->getError());
+            }
+        }
+
         $result = $this->model->save($params['row']);
 
         if ($result) {
@@ -121,7 +134,7 @@ class Backend extends Base
         } else {
             $arr = [
                 'code'  => '500',
-                'msg'   => '添加成功',
+                'msg'   => $failMsg,
             ];
         }
 
@@ -169,12 +182,12 @@ class Backend extends Base
             $arr = [
                 'code'  => '200',
                 'redirect' => $params['redirect'],
-                'msg'   => '添加成功',
+                'msg'   => '保存成功',
             ];
         } else {
             $arr = [
                 'code'  => '500',
-                'msg'   => '添加成功',
+                'msg'   => '保存失败',
             ];
         }
 

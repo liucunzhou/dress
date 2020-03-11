@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <title>礼服系统</title>
+    <meta name="description" content="overview &amp; stats"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    {include file="common/meta"}
+</head>
+
+<body class="no-skin">
+<div class="space-30"></div>
+<form class="form-ajax form-right-side" method="post" action="admin.php?s=customer/doEdit">
+    <table class="table-form">
+        <tbody>
+            <tr>
+                <td width="20%">选择礼服师</td>
+                <td width="80%">
+                    <select name="row[user_id]" class="form-control">
+                        <option value="0">--选择礼服师--</option>
+                        {foreach name="dressers" item="item"}
+                            <option value="{$item.id}">{$item.realname}</option>
+                        {/foreach}
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+
+        <div class="right-side-bottom">
+            <input type="hidden" name="row[id]" value="{$data.id}" />
+            <input type="hidden" name="redirect" value="dialog" />
+            <button type="submit" class="submit">立即分配</button>
+        </div>
+    </table>
+</form>
+</html>

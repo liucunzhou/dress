@@ -146,8 +146,15 @@ Route::post('supplier/doEdit', 'dress.supplier/doEdit');
 // customer
 Route::get('customer/promoter', 'customer.customer/promoter');
 Route::get('customer/index', 'customer.customer/index');
+Route::get('customer/sea', 'customer.customer/sea');
+Route::get('customer/allocate', 'customer.customer/allocate');
 Route::get('customer/create', 'customer.customer/create');
 Route::get('customer/edit', 'customer.customer/edit');
 Route::post('customer/doCreate', 'customer.customer/doCreate');
 Route::post('customer/doEdit', 'customer.customer/doEdit');
 Route::get('customer/delete', 'customer.customer/delete');
+
+Route::get('visit/index', 'customer.visit/index');
+Route::get('visit/create', 'customer.visit/create');
+Route::get('visit/delete', 'customer.visit/delete');
+Route::post('visit/doCreate', 'customer.visit/doCreate');
