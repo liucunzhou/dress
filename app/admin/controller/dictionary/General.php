@@ -95,4 +95,10 @@ class General extends Backend
     {
         //
     }
+
+    public function system()
+    {
+
+        return View::fetch();
+    }
 }

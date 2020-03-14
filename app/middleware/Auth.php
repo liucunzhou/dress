@@ -16,6 +16,7 @@ class Auth
      */
     public function handle($request, \Closure $next)
     {
+    
         $user = Session::get('user');
         if(!empty($user)) {
             return $next($request);
