@@ -21,12 +21,8 @@ Route::post('rent/delete', 'rent.rent/delete');
 Route::post('rent/removeGoods', 'rent.rent/removeGoods');
 Route::get('rent/schedule', 'rent.rent/schedule');
 
-Route::get('take/index', 'rent.take/index');
-Route::get('take/create', 'rent.take/create');
-Route::get('take/index', 'rent.take/edit');
-Route::post('take/doCreate', 'rent.take/doCreate');
-Route::post('take/doEdit', 'rent.take/doEdit');
-Route::get('take/delete', 'rent.take/delete');
+Route::get('take/build', 'rent.take/build');
+Route::post('take/doBuild', 'rent.take/doBuild');
 
 Route::get('back/index', 'rent.back/index');
 Route::get('back/create', 'rent.back/create');

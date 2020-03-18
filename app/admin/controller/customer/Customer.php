@@ -32,7 +32,7 @@ class Customer extends Backend
     {
         // $where['status'] = 'normal';
         $where = [];
-        $rows = $this->model->where($where)->order('weigh desc')->select();
+        $rows = $this->model->where($where)->order('weigh desc')->paginate(10);
         View::assign('rows', $rows);
 
         //

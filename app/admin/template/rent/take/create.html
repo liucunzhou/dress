@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    {include file="common/meta"}
+</head>
+<body>
+
+<div class="space-30"></div>
+
+<form class="form-ajax form-flex form-right-side" method="post" action="admin.php?s=rent.take/doCreate">
+  <table class="table-form">
+    <tr>
+      <td width="25%">预约取件时间</td>
+      <td width="70%">
+        <input type="text" value="" class="date">
+      </td>
+      <td width="5%"></td>
+    </tr>
+    <tr>
+      <td>实际取件时间</td>
+      <td>
+        <input type="text" name="row[fetch_date]" value="" class="date" autocomplete="off">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>取件人</td>
+      <td>
+        <input type="text" name="row[contact_name]">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>联系电话</td>
+      <td>
+        <input type="number" name="row[contact_mobile]">
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>处理人</td>
+      <td>
+        <select name="row[operator_id]">
+          <option value="0">--请选择处理人--</option>
+        </select>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <input type="hidden" name="redirect" value="dialog" />
+        <input type="hidden" name="row[rent_id]" value="{$rent.id}">
+        <button type="submit" class="submit">立即保存</button>
+      </td>
+      <td></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

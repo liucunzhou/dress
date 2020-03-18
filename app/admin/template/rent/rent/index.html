@@ -40,6 +40,7 @@
 
         <div class="space-30"></div>
 
+        <!--
         <div class="btn-group">
             <a href="/admin.php?s=rent/create" class="btn btn-create-order">下单</a>
             <a href="/admin.php?s=take/update" class="btn btn-fetch">取件</a>
@@ -47,6 +48,7 @@
             <a href="/admin.php?s=wash/update" class="btn btn-wash">清洗</a>
             <a href="/admin.php?s=rent/wash" class="btn btn-print">打印收款单</a>
         </div>
+        -->
 
         <table class="table-list">
             <thead>
@@ -88,7 +90,9 @@
                         <td>
                             <a class="underline layui-right-side" href="javascript:void(0);" data-action="/admin.php?s=rent/read/id/{$row.id}" title="查看订单信息">{$row.order_no}</a>
                         </td>
-                        <td>{$statusText[$row['rent_status']]}</td>
+                        <td>
+                            <a class="underline layui-right-side" href="javascript:void(0);" data-action="/admin.php?s=take/build/rent_id/{$row.id}" title="取件" data-width="30">{$statusText[$row['rent_status']]}</a>
+                        </td>
                         <td>{$row.totals}</td>
                         <td>{$row.groom}</td>
                         <td>{$row.groom_mobile}</td>
