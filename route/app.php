@@ -20,9 +20,19 @@ Route::get('rent/read', 'rent.rent/read');
 Route::post('rent/delete', 'rent.rent/delete');
 Route::post('rent/removeGoods', 'rent.rent/removeGoods');
 Route::get('rent/schedule', 'rent.rent/schedule');
-
 Route::get('take/build', 'rent.take/build');
 Route::post('take/doBuild', 'rent.take/doBuild');
+
+Route::get('sale/index', 'sale.sale/index');
+Route::get('sale/create', 'sale.sale/create');
+Route::post('sale/doCreate', 'sale.sale/doCreate');
+Route::get('sale/edit', 'sale.sale/edit');
+Route::post('sale/doEdit', 'sale.sale/doEdit');
+Route::get('sale/read', 'sale.sale/read');
+Route::post('sale/delete', 'sale.sale/delete');
+Route::post('sale/removeGoods', 'sale.sale/removeGoods');
+Route::get('sale/build', 'sale.take/build');
+Route::post('sale/doBuild', 'sale.take/doBuild');
 
 Route::get('back/index', 'rent.back/index');
 Route::get('back/create', 'rent.back/create');

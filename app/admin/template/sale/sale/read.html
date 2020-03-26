@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <title>礼服系统</title>
+    <meta name="description" content="overview &amp; stats"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+            border-spacing: 0;
+            text-decoration: none;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        body{
+            background-color: #fff;
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            padding: 22px 12px;
+        }
+        .customer {
+            flex: 0 180px;
+            padding-bottom: 16px;
+        }
+        .contract{
+            display: flex;
+            flex: 1;
+            border: 1px solid #dedede;
+        }
+        .contract .contract-left,
+        .contract .contract-right{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .contract .contract-left{
+            border-right: 1px solid #dedede;
+        }
+        .contract .contract-left .remark,
+        .contract .contract-right .remark{
+            flex: 1;
+            padding: 9px;
+            border-bottom: 1px solid #dedede;
+        }
+
+        .items {
+            padding: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .sign-bottom {
+            padding: 8px;
+            text-align: right;
+        }
+        .flex-row {
+            display: flex;
+        }
+        .flex-row.with-border{
+            border: 1px solid #dedede;
+        }
+        .flex-row-half{
+            flex: 1;
+        }
+        .flex-row-half.logo{
+            text-align: right;
+        }
+        .flex-row-half.logo img {
+            max-height: 110px;
+        }
+        .flex-row.with-border .flex-row-half:first-child{
+            border-right: 1px solid #dedede;
+        }
+        .table-none {
+            width: 100%;
+        }
+        .table-none,.table-none tr,.table-none tr td{
+            border:none;
+        }
+        .table-none tr td {
+            vertical-align: bottom;
+            height: 28px;
+        }
+        .table-none td.border-bottom{
+            border-bottom: 1px solid #000;
+        }
+        .border-bottom {
+            border-bottom: 1px solid #dedede;
+        }
+        .pecent-50 {
+            width: 50%;
+        }
+        .padding-left-12{
+            padding-left: 12px;
+        }
+        .table-border-half {
+            width: 100%;
+        }
+        .table-border-half tr td{
+            border-right: 1px solid #dedede;
+            border-bottom: 1px solid #dedede;
+            padding: 4px;
+            text-align: center;
+        }
+        .table-border-half tr td:last-child{
+            border-right: none;
+        }
+        .table-border-half.no-last-row-border-bottom tr:last-child td{
+            border-bottom: none;
+        }
+        .w3em{
+            width: 4em;
+        }
+        .w4em{
+            width: 5em;
+        }
+        .flex-row-half.event{
+            display: flex;
+            align-items: flex-end;
+        }
+    </style>
+</head>
+
+<body class="no-skin">
+<div class="main">
+    <div class="customer">
+        <div class="flex-row">
+            <div class="flex-row-half">
+                <a href="" class="btn btn-xs btn-success">打印</a>
+            </div>
+        </div>
+        <div class="flex-row">
+            <div class="flex-row-half logo">
+                <img src="/static/images/aoliweiya.png" alt="log">
+            </div>
+            <div class="flex-row-half padding-left-12 event">
+                <table class="table-none">
+                    <tr>
+                        <td class="pecent-50">Order Date (订单日期)</td>
+                        <td class="border-bottom pecent-50"></td>
+                    </tr>
+                    <tr>
+                        <td class="pecent-50">Wedding Date (结婚日期)</td>
+                        <td class="border-bottom pecent-50"></td>
+                    </tr>
+                    <tr>
+                        <td class="pecent-50">Consulant (顾问)</td>
+                        <td class="border-bottom pecent-50"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="flex-row">
+            <div class="flex-row-half">
+                <table class="table-none">
+                    <tr>
+                        <td class="pecent-50">Groom's Name 新郎姓名</td>
+                        <td class="pecent-50 border-bottom"></td>
+                    </tr>
+                    <tr>
+                        <td class="pecent-50">Bride Name 新娘姓名</td>
+                        <td class="pecent-50 border-bottom"></td>
+                    </tr>
+                    <tr>
+                        <td class="pecent-50">Address (地址)</td>
+                        <td class="pecent-50 border-bottom"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="flex-row-half padding-left-12">
+                <table class="table-none">
+                    <tr>
+                        <td class="pecent-50">Mobile Phone (移动电话)</td>
+                        <td class="pecent-50 border-bottom"></td>
+                    </tr>
+                    <tr>
+                        <td class="pecent-50">Mobile Phone (移动电话)</td>
+                        <td class="pecent-50 border-bottom"></td>
+                    </tr>
+                    <tr>
+                        <td class="pecent-50">WeChat (微信)</td>
+                        <td class="pecent-50 border-bottom"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="contract">
+        <div class="flex-row-half contract-left">
+            <table class="table-border-half">
+                <tr>
+                    <td class="pecent-50">Description(产品说明)</td>
+                    <td class="pecent-50">Total(总价)</td>
+                </tr>
+            </table>
+            <div class="remark">
+
+            </div>
+            <table class="table-border-half no-last-row-border-bottom">
+                <tr>
+                    <td class="w4em">付款方式</td>
+                    <td>日期</td>
+                    <td>付款金额</td>
+                    <td>收款人</td>
+                    <td>收银</td>
+                </tr>
+                <tr>
+                    <td>定金</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>余额</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2">西服取衣日</td>
+                    <td colspan="3"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">婚纱取衣日</td>
+                    <td colspan="3"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">婚纱还衣日</td>
+                    <td colspan="3"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="flex-row-half contract-right">
+            <table class="table-border-half">
+                <tr>
+                    <td class="w3em">尺寸</td>
+                    <td>新娘</td>
+                    <td>伴娘</td>
+                    <td>伴娘</td>
+                    <td>伴娘</td>
+                </tr>
+                <tr>
+                    <td>胸围</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>腰围</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>臂围</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>前身长</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>裙长</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>身高</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>鞋高</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <div class="remark">
+                备注:
+            </div>
+            <div class="items">
+                <p>注意事项:</p>
+                <p>1: 客户租赁或定制婚纱礼服套系需一次性付清套系金额, 其中租赁婚纱礼服套系金额的30%为定金,定制婚纱礼服或男士礼服金额的70%为定金(如有违约金将不予退还)。</p>
+                <p>2: 客户租赁婚纱礼服的期限为三天, 逾期将按日收取套系金额的10%为租金</p>
+                <p>3: 婚纱礼服取件日上海顾客婚礼前1-2天,外地顾客婚礼前5天,不能自取需快递会在婚期前1-2天收到快件(快递费由顾客承担统一顺丰快递)</p>
+                <p>4: 客户租赁婚纱礼服取件时将按每件收取押金10000-50000元,押金仅限支付宝或现金。</p>
+                <p>5: 客户在消费时如有疑问,请向服务人员咨询。</p>
+                <p>6: 最终解释权归奥利维亚婚纱馆所有</p>
+            </div>
+            <div class="sign-bottom">
+                客户签名
+                _____________
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

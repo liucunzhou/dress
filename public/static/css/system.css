@@ -105,6 +105,16 @@ html, body {
 .v-header .top-menu .top-menu-item dl dd {
 	white-space: nowrap;
 }
+/*****************flex start **************************/
+.flex{
+	display: flex;
+}
+.flex .flex-left,
+.flex .flex-right{
+	flex: 1;
+}
+
+/**************** flex end **************************/
 
 /***************** *************************/
 .v-brumbs{

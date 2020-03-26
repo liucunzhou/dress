@@ -12,6 +12,9 @@
 // [ 应用入口文件 ]
 namespace think;
 
+ini_set("display_errors", "On");
+error_reporting(E_ALL | E_STRICT);
+
 require __DIR__ . '/../vendor/autoload.php';
 
 // 执行HTTP应用并响应

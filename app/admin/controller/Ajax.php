@@ -64,6 +64,18 @@ class Ajax extends Backend
                     return View::fetch('dress/goods');
                 }
             } else {
+                $rentGoodsModel = new \app\admin\model\RentGoods();
+                $data = [];
+                $data['rent_id'] = $params['rent_id'];
+                $data['goods_type'] = 'dress';
+                $data['goods_id'] = $dress->id;
+                $rentGoods = $rentGoodsModel->where($data)->find();
+                if(!empty($rentGoods)) {
+                    return '1';
+                } else {
+                    $rentGoodsModel->save($data);
+                    return View::fetch('dress/goods');
+                }
                 // 添加的时候直接添加
                 return View::fetch('dress/goods');
             }
