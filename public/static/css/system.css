@@ -227,7 +227,7 @@ html, body {
 .form-flex-right .order-goods-box::-webkit-scrollbar,
 .form-flex-right .order-payment-box::-webkit-scrollbar,
 .v-container .h-left-side::-webkit-scrollbar,
-.v-container .h-main.with-scroll::-webkit-scrollbar {
+.v-container .h-main::-webkit-scrollbar {
 	width: 1px;
 	height: 1px;
 }
@@ -235,7 +235,7 @@ html, body {
 .form-flex-right .order-goods-box::-webkit-scrollbar-thumb,
 .form-flex-right .order-payment-box::-webkit-scrollbar-thumb,
 .v-container .h-left-side::-webkit-scrollbar-thumb,
-.v-container .h-main.with-scroll::-webkit-scrollbar-thumb {
+.v-container .h-main::-webkit-scrollbar-thumb {
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
 }
@@ -243,7 +243,7 @@ html, body {
 .form-flex-right .order-goods-box::-webkit-scrollbar-track,
 .form-flex-right .order-payment-box::-webkit-scrollbar-track,
 .v-container .h-left-side::-webkit-scrollbar-track,
-.v-container .h-main.with-scroll::-webkit-scrollbar-track {
+.v-container .h-main::-webkit-scrollbar-track {
 	-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
 	border-radius: 10px;
 }
@@ -255,7 +255,7 @@ html, body {
 	background-color: #000;
 }
 
-.v-container .h-main.with-scroll{
+.v-container .h-main{
 	overflow-y: auto;
 }
 

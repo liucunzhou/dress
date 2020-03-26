@@ -1,22 +1,22 @@
 <?php
 declare (strict_types = 1);
 
-namespace app\admin\controller\rent;
+namespace app\admin\controller\sale;
 
 use app\admin\controller\Backend;
-use app\admin\model\RentFetch;
+use app\admin\model\SaleFetch;
 use think\facade\View;
 use think\Request;
 
-class Take extends Backend
+class Fetch extends Backend
 {
-    protected $rentModel;
+    protected $saleModel;
     public function __construct(Request $request)
     {
         parent::__construct($request);
-        $this->model = new RentFetch();
+        $this->model = new SaleFetch();
 
-        $this->rentModel = new \app\admin\model\Rent();
+        $this->saleModel = new \app\admin\model\Sale();
     }
 
     public function build()
@@ -24,12 +24,12 @@ class Take extends Backend
         $params = $this->request->param();
 
         $where = [];
-        $where['id'] = $params['rent_id'];
-        $rent = $this->rentModel->where($where)->find();
-        View::assign('rent', $rent);
+        $where['id'] = $params['sale_id'];
+        $sale = $this->saleModel->where($where)->find();
+        View::assign('sale', $sale);
 
         $where = [];
-        $where['rent_id'] = $params['rent_id'];
+        $where['sale_id'] = $params['sale_id'];
         $take = $this->model->where($where)->find();
         if(!empty($take)) {
             $id = $take->id;

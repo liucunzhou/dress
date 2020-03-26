@@ -61,24 +61,25 @@ class Ajax extends Backend
                     return '1';
                 } else {
                     $rentGoodsModel->save($data);
-                    return View::fetch('dress/goods');
+                    return View::fetch('dress/dress/goods');
                 }
-            } else {
-                $rentGoodsModel = new \app\admin\model\RentGoods();
+            } else if (isset($params['sale_id']) && $params['sale_id'] > 0){
+                $saleGoodsModel = new \app\admin\model\SaleGoods();
                 $data = [];
-                $data['rent_id'] = $params['rent_id'];
+                $data['sale_id'] = $params['sale_id'];
                 $data['goods_type'] = 'dress';
                 $data['goods_id'] = $dress->id;
-                $rentGoods = $rentGoodsModel->where($data)->find();
+                $rentGoods = $saleGoodsModel->where($data)->find();
                 if(!empty($rentGoods)) {
                     return '1';
                 } else {
-                    $rentGoodsModel->save($data);
-                    return View::fetch('dress/goods');
+                    $saleGoodsModel->save($data);
+                    return View::fetch('dress/dress/goods');
                 }
-                // 添加的时候直接添加
-                return View::fetch('dress/goods');
+            } else {
+                return View::fetch('dress/dress/goods');
             }
+
         } else {
             return '';
         }
