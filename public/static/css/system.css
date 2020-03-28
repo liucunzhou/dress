@@ -619,3 +619,45 @@ html, body {
 	height: 30px;
 }
 /********* tools end *********/
+
+.table tr td{
+	color: #fff;
+	cursor: pointer;
+}
+
+.table tr td.gone,
+.table tr td.coming{
+	color: #a0a0a0;
+}
+
+.calendar-header {
+	display: flex;
+	margin-bottom: 8px;
+}
+
+.calendar-header .calendar-title{
+	flex: 1;
+	color: #fff;
+	cursor: pointer;
+	text-align: center;
+}
+
+.calendar-header .c-btn-right {
+	text-align: right;
+}
+
+.c-btn {
+	display: inline-block;
+	height: 24px;
+    line-height: 24px;
+    padding: 0 8px;
+    color: #c5c5c5;
+    background-color: #393939;
+    letter-spacing: 0;
+	border-radius: 0!important;
+	cursor: pointer;
+}
+
+.calendar-header .c-btn-right .c-btn:first-child{
+	margin-right: 1px;
+}
