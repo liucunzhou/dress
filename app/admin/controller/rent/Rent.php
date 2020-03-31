@@ -324,8 +324,8 @@ class Rent extends Backend
             // View::assign('endDate', '2020-03-08');
         } else {
             $origin = $data->getData();
-            View::assign('initDate', date('Y-m-d', $origin['createtime']));
-            View::assign('startDate', date('Y-m-d', $origin['createtime']));
+            View::assign('initDate', date('Y-m-d', $origin['fetch_date']));
+            View::assign('startDate', date('Y-m-d', $origin['fetch_date']));
             View::assign('endDate', date('Y-m-d', $origin['return_date']));
         }
 
