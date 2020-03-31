@@ -302,6 +302,36 @@ class Rent extends Backend
      */
     public function schedule()
     {
+
+        $params = $this->request->param();
+        $data = [];
+        if(!empty($params['sku'])) {
+            $where = [];
+            $where['sku'] = $params['sku'];
+            $dress = $this->dressModel->where($where)->find();
+            View::assign('dress', $dress);
+            if(!empty($dress)) {
+                $data = $this->model->getOrderByDressId($dress->id);    
+            }
+        }
+        
+
+        if(empty($data)) {
+            View::assign('initDate', date('Y-m-d'));
+            View::assign('startDate', '');
+            View::assign('endDate', '');
+            // View::assign('startDate', '2020-03-03');
+            // View::assign('endDate', '2020-03-08');
+        } else {
+            $origin = $data->getData();
+            View::assign('initDate', date('Y-m-d', $origin['createtime']));
+            View::assign('startDate', date('Y-m-d', $origin['createtime']));
+            View::assign('endDate', date('Y-m-d', $origin['return_date']));
+        }
+
+        View::assign('data', $data);
+
+
         return View::fetch();
     }
 }

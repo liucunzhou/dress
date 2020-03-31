@@ -15,7 +15,11 @@
     <script src='/static/fullcalendar/interaction/main.js'></script>
     <script src="/static/js/schedule.js"></script>
     <script src="/static/js/calendar.js"></script>
-    
+    <script>
+        var initDate = '{$initDate}';
+        var startDate = '{$startDate}';
+        var endDate = '{$endDate}';
+    </script>
 </head>
 
 <body class="no-skin">
@@ -23,14 +27,15 @@
 <div class="v-container">
     {include file="common/h-left-side"}
     <div class="h-main">
-        <form class="h-form-inline">
+        <form method="get" class="h-form-inline" action="/admin.php?s=rent/schedule">
+            <input type="hidden" name="s" value="rent/schedule">
             <div class="h-form-group">
                 <label>礼服编号</label>
-                <input type="text" placeholder="礼服编号">
+                <input type="text" placeholder="礼服编号" name="sku">
             </div>
             <div class="h-form-group">
                 <label>租赁日期</label>
-                <input type="text" placeholder="租赁日期">
+                <input type="text" name="date_range" class="date" placeholder="租赁日期">
             </div>
             <button type="submit" class="btn btn-mine">搜索</button>
         </form>
@@ -38,10 +43,41 @@
         <br>
         <div class="flex">
             <div class="flex-left">
-                <div id="calendar">dddd</div>
+                <div id="calendar"></div>
             </div>
-            <div class="flex-right">
-
+            <div class="flex-right padding20">
+                {if !empty($data)} 
+                    <table class="table-list font-white">
+                        <tbody>
+                            <tr>
+                                <td width="15%">礼服名称:</td>
+                                <td>{$dress.title}</td>
+                            </tr>
+                            <tr>
+                                <td>礼服编号:</td>
+                                <td>{$dress.sku}</td>
+                            </tr>
+                            <tr>
+                                <td>礼服图片:</td>
+                                <td>
+                                    <img src="{$dress.images}" alt="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>租赁价格:</td>
+                                <td>{$dress.rent_price}</td>
+                            </tr>
+                            <tr>
+                                <td>描述</td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                {else /}
+                    <div class="no-tip">未找到该商品的订单</div>
+                {/if}
             </div>
         </div>
     </div>

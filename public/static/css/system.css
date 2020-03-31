@@ -661,3 +661,29 @@ html, body {
 .calendar-header .c-btn-right .c-btn:first-child{
 	margin-right: 1px;
 }
+
+.c-day{
+	height: 90px;
+}
+
+.c-day.using{
+	background-color: #655858;
+	color: #fff;
+}
+
+.c-day:hover{
+	background-color: #8ce3ff;
+}
+
+span.c-date {
+	float: right;
+}
+
+.padding20{
+	padding: 32px 20px;
+}
+
+.font-white,
+.no-tip{
+	color: #fff;
+}
