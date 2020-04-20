@@ -16,9 +16,6 @@ class Backend extends Base
     protected $validate = '';
     protected $model = '';
     protected $middleware = [Auth::class];
-    protected $breadcrumbIndex = [];
-    protected $breadcrumbCreate = [];
-    protected $breadcrumbEdit = [];
 
     public function __construct(Request $request)
     {
@@ -26,65 +23,15 @@ class Backend extends Base
         $this->user = Session::get('user');
         View::assign('user', $this->user);
 
-        $rule = $this->request->rule();
-        $cpath = $rule->getRule();
-        if(empty($cpath)) {
-            $controller = $this->request->controller();
-            $action = $this->request->action();
-            $cpath = strtolower($controller . '/' . $action);
-        } else {
-            $cpath = strtolower($cpath);
-        }
+        ### 构建左侧导航
+        $this->buildLeftSide();
 
-        $where = [];
-        $where['status'] = 'normal';
-        $where['ismenu'] = 1;
-        $rules = AuthRule::where($where)->order('weigh desc')->select();
-        $menu = [];
-        foreach ($rules as $rule) {
-            $data = $rule->getData();
-            if($data['pid'] == 0) {
-                $menu[$data['id']]['info'] = $data;
-            } else {
-                $menu[$data['pid']]['items'][] = $data;
-            }
-        }
-
-        
-        foreach($menu as $key=>&$row) {
-            if(!isset($row['info'])) {
-                unset($menu[$key]);
-                continue;
-            }
-
-            $path = strtolower($row['info']['name']);
-            if($cpath == $path) {
-                $row['info']['active'] = 1;
-            } else {
-                $row['info']['active'] = 0;
-            }
-            
-            if(isset($row['items'])) {
-                foreach($row['items'] as &$line) {
-                    $path = strtolower($line['name']);
-                    if($cpath == $path) {
-                        $line['active'] = 1;
-                        $row['info']['active'] = 1;
-                    } else {
-                        $line['active'] = 0;
-                    }
-                }
-            }
-        }
-
-        View::assign('menu', $menu);
-
+        ### 构建面包屑
+        $this->buildBreadcrumb();
     }
 
     public function index()
     {
-        View::assign('breadcrumb', $this->breadcrumbIndex);
-
         $where['status'] = 'normal';
         $rows = $this->model->where($where)->order('weigh desc')->select();
         View::assign('rows', $rows);
@@ -94,7 +41,6 @@ class Backend extends Base
 
     public function create()
     {
-        View::assign('breadcrumb', $this->breadcrumbCreate);
         return View::fetch();
     }
 
@@ -141,9 +87,6 @@ class Backend extends Base
         $row = $this->model->find($id);
         View::assign('data', $row);
 
-
-        View::assign('breadcrumb', $this->breadcrumbEdit);
-
         return View::fetch();
     }
 
@@ -176,18 +119,6 @@ class Backend extends Base
     }
 
     /**
-     * 保存更新的资源
-     *
-     * @param  \think\Request  $request
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * 删除指定资源
      *
      * @param  int  $id
@@ -205,7 +136,7 @@ class Backend extends Base
         } else {
             $arr = [
                 'code'  => '500',
-                'msg'   => '删除是啊比',
+                'msg'   => '删除失败',
             ];
         }
 
@@ -223,5 +154,67 @@ class Backend extends Base
         $filename = strtolower($filename);
         $content = "var {$filename} =".json_encode($result).";";
         file_put_contents("./assets/source/{$filename}.js", $content);
+    }
+
+    private function buildLeftSide()
+    {
+        $rule = $this->request->rule();
+        $cpath = $rule->getRule();
+        if(empty($cpath)) {
+            $controller = $this->request->controller();
+            $action = $this->request->action();
+            $cpath = strtolower($controller . '/' . $action);
+        } else {
+            $cpath = strtolower($cpath);
+        }
+
+        $where = [];
+        $where['status'] = 'normal';
+        $where['ismenu'] = 1;
+        $rules = AuthRule::where($where)->order('weigh desc')->select();
+        $menu = [];
+        foreach ($rules as $rule) {
+            $data = $rule->getData();
+            if($data['pid'] == 0) {
+                $menu[$data['id']]['info'] = $data;
+            } else {
+                $menu[$data['pid']]['items'][] = $data;
+            }
+        }
+
+
+        foreach($menu as $key=>&$row) {
+            if(!isset($row['info'])) {
+                unset($menu[$key]);
+                continue;
+            }
+
+            $path = strtolower($row['info']['name']);
+            if($cpath == $path) {
+                $row['info']['active'] = 1;
+            } else {
+                $row['info']['active'] = 0;
+            }
+
+            if(isset($row['items'])) {
+                foreach($row['items'] as &$line) {
+                    $path = strtolower($line['name']);
+                    if($cpath == $path) {
+                        $line['active'] = 1;
+                        $row['info']['active'] = 1;
+                    } else {
+                        $line['active'] = 0;
+                    }
+                }
+            }
+        }
+
+        View::assign('menu', $menu);
+    }
+
+    private function buildBreadcrumb()
+    {
+        $breadcrumb = [];
+        View::assign('breadcrumb', $breadcrumb);
     }
 }

@@ -11,7 +11,8 @@
 use think\facade\Route;
 
 // rent
-Route::get('rent/index', 'rent.rent/index');
+Route::get('admin/rent/index', 'rent.rent/index');
+Route::post('rent/index', 'rent.rent/index');
 Route::get('rent/create', 'rent.rent/create');
 Route::post('rent/doCreate', 'rent.rent/doCreate');
 Route::get('rent/edit', 'rent.rent/edit');
@@ -74,7 +75,7 @@ Route::post('color/doCreate', 'dictionary.color/doCreate');
 Route::post('color/doEdit', 'dictionary.color/doEdit');
 Route::get('color/delete', 'dictionary.color/delete');
 
-Route::get('store/index', 'dictionary.store/index');
+Route::get('/admin/store/index', '/admin/dictionary.store/index');
 Route::get('store/create', 'dictionary.store/create');
 Route::get('store/edit', 'dictionary.store/edit');
 Route::post('store/doCreate', 'dictionary.store/doCreate');
@@ -89,7 +90,7 @@ Route::post('payment/doEdit', 'dictionary.payment/doEdit');
 Route::get('payment/delete', 'dictionary.payment/delete');
 
 // organize
-Route::get('department/index', 'organize.department/index');
+Route::get('admin/department/index', 'organize.department/index');
 Route::get('department/create', 'organize.department/create');
 Route::get('department/edit', 'organize.department/edit');
 Route::post('department/doCreate', 'organize.department/doCreate');
