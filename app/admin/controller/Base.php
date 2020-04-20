@@ -9,7 +9,7 @@ use think\Request;
 
 class Base
 {
-    protected $loginUrl = '/admin.php?s=passport/login';
+    protected $loginUrl = '/admin/passport/login';
     protected $request;
 
     public function __construct(Request $request)

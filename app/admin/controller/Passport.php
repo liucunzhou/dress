@@ -26,9 +26,10 @@ class Passport extends Base
             // Session::set('user', $user->getData());
             session('user', $user->getData());
             Session::save();
+            $url = url('/admin/organize.user/info')->build();
             $arr = [
                 'code'      => '200',
-                'redirect'  => '/admin.php?s=User/info',
+                'redirect'  => $url,
                 'msg'       => '登陆成功'
             ];
         } else {

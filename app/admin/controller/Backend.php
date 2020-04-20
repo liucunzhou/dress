@@ -16,6 +16,9 @@ class Backend extends Base
     protected $validate = '';
     protected $model = '';
     protected $middleware = [Auth::class];
+    protected $breadcrumbIndex = [];
+    protected $breadcrumbCreate = [];
+    protected $breadcrumbEdit = [];
 
     public function __construct(Request $request)
     {
@@ -40,7 +43,6 @@ class Backend extends Base
         $menu = [];
         foreach ($rules as $rule) {
             $data = $rule->getData();
-            // $path = strtolower($data['name']);
             if($data['pid'] == 0) {
                 $menu[$data['id']]['info'] = $data;
             } else {
@@ -79,13 +81,10 @@ class Backend extends Base
 
     }
 
-    /**
-     * 显示资源列表
-     *
-     * @return \think\Response
-     */
     public function index()
     {
+        View::assign('breadcrumb', $this->breadcrumbIndex);
+
         $where['status'] = 'normal';
         $rows = $this->model->where($where)->order('weigh desc')->select();
         View::assign('rows', $rows);
@@ -93,22 +92,12 @@ class Backend extends Base
         return View::fetch();
     }
 
-    /**
-     * 显示创建资源表单页.
-     *
-     * @return \think\Response
-     */
     public function create()
     {
-        //
+        View::assign('breadcrumb', $this->breadcrumbCreate);
         return View::fetch();
     }
 
-    /**
-     * 执行添加l逻辑.
-     *
-     * @return \think\Response
-     */
     public function doCreate()
     {
         $params = $this->request->param();
@@ -142,17 +131,6 @@ class Backend extends Base
     }
 
     /**
-     * 显示指定的资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function read($id)
-    {
-        //
-    }
-
-    /**
      * 显示编辑资源表单页.
      *
      * @param  int  $id
@@ -162,6 +140,9 @@ class Backend extends Base
     {
         $row = $this->model->find($id);
         View::assign('data', $row);
+
+
+        View::assign('breadcrumb', $this->breadcrumbEdit);
 
         return View::fetch();
     }

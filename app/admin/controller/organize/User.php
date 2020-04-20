@@ -87,11 +87,27 @@ class User extends Backend
 
     public function info()
     {
+        $breadcrumb = [
+            [
+                'title' =>  '控制台',
+                'url'   =>  ''
+            ]
+        ];
+        View::assign('breadcrumb', $breadcrumb);
+
         return View::fetch();
     }
 
     public function repassword()
     {
+        $breadcrumb = [
+            [
+                'title' =>  '修改密码',
+                'url'   =>  ''
+            ]
+        ];
+        View::assign('breadcrumb', $breadcrumb);
+
         return View::fetch();
     }
 
