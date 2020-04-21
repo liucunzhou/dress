@@ -21,7 +21,7 @@ class Auth
         if(!empty($user)) {
             return $next($request);
         } else {
-            return \redirect('/admin.php?s=passport/login');
+            return \redirect('/admin/passport/login');
         }
     }
 }

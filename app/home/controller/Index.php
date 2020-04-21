@@ -7,6 +7,6 @@ class Index
 {
     public function index()
     {
-        return redirect('/admin.php?s=passport/login');
+        return redirect('/admin/passport/login');
     }
 }

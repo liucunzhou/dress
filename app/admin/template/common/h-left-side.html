@@ -7,7 +7,7 @@
             </a>
         </li>
         {volist name="menu" id="row"}
-            {if $row['info']['active'] == '1'}
+            {if $row['active'] == '1'}
                 <li class="active">
                     {if isset($row['items'])}
                     <a href="#" class="dropdown-toggle">

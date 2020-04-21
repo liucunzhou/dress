@@ -158,54 +158,30 @@ class Backend extends Base
 
     private function buildLeftSide()
     {
-        $rule = $this->request->rule();
-        $cpath = $rule->getRule();
-        if(empty($cpath)) {
-            $controller = $this->request->controller();
-            $action = $this->request->action();
-            $cpath = strtolower($controller . '/' . $action);
-        } else {
-            $cpath = strtolower($cpath);
-        }
+        $module = $this->request->rootUrl();
+        $controller = $this->request->controller();
+        $action = $this->request->action();
+        $cpath = strtolower($module.'/'.$controller . '/' . $action);
+
+        ### 获取当前事件的目录
+        $authItem = AuthRule::where('name', '=', $cpath)->find();
+        $depth = explode('-', $authItem->path);
+        $dirId = $depth[1];
 
         $where = [];
         $where['status'] = 'normal';
         $where['ismenu'] = 1;
         $rules = AuthRule::where($where)->order('weigh desc')->select();
         $menu = [];
+
+        ### 初始化菜单
         foreach ($rules as $rule) {
             $data = $rule->getData();
             if($data['pid'] == 0) {
                 $menu[$data['id']]['info'] = $data;
+                $menu[$data['id']]['active'] = $data['id'] == $dirId ? '1' : 0;
             } else {
                 $menu[$data['pid']]['items'][] = $data;
-            }
-        }
-
-
-        foreach($menu as $key=>&$row) {
-            if(!isset($row['info'])) {
-                unset($menu[$key]);
-                continue;
-            }
-
-            $path = strtolower($row['info']['name']);
-            if($cpath == $path) {
-                $row['info']['active'] = 1;
-            } else {
-                $row['info']['active'] = 0;
-            }
-
-            if(isset($row['items'])) {
-                foreach($row['items'] as &$line) {
-                    $path = strtolower($line['name']);
-                    if($cpath == $path) {
-                        $line['active'] = 1;
-                        $row['info']['active'] = 1;
-                    } else {
-                        $line['active'] = 0;
-                    }
-                }
             }
         }
 
