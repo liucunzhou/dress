@@ -190,7 +190,26 @@ class Backend extends Base
 
     private function buildBreadcrumb()
     {
+        $module = $this->request->rootUrl();
+        $controller = $this->request->controller();
+        $action = $this->request->action();
+        $cpath = strtolower($module.'/'.$controller . '/' . $action);
+
+        ### 获取当前事件的目录
+        $authItem = AuthRule::where('name', '=', $cpath)->find();
+        $depth = explode('-', $authItem->path);
+
         $breadcrumb = [];
+        foreach ($depth as $value) {
+            if($value <=0 ) continue;
+
+            $authItem = AuthRule::where('id', '=', $value)->find();
+            $breadcrumb[] = [
+                'title' => $authItem->title,
+                'url'   => url($authItem->name)->build()
+            ];
+        }
+
         View::assign('breadcrumb', $breadcrumb);
     }
 }
