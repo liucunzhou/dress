@@ -165,8 +165,12 @@ class Backend extends Base
 
         ### 获取当前事件的目录
         $authItem = AuthRule::where('name', '=', $cpath)->find();
-        $depth = explode('-', $authItem->path);
-        $dirId = $depth[1];
+        if($authItem) {
+            $depth = explode('-', $authItem->path);
+            $dirId = $depth[1];
+        } else {
+            $dirId = 0;
+        }
 
         $where = [];
         $where['status'] = 'normal';
@@ -179,7 +183,7 @@ class Backend extends Base
             $data = $rule->getData();
             if($data['pid'] == 0) {
                 $menu[$data['id']]['info'] = $data;
-                $menu[$data['id']]['active'] = $data['id'] == $dirId ? '1' : 0;
+                $menu[$data['id']]['active'] = $dirId != 0 && $data['id'] == $dirId ? '1' : 0;
             } else {
                 $menu[$data['pid']]['items'][] = $data;
             }
@@ -197,17 +201,18 @@ class Backend extends Base
 
         ### 获取当前事件的目录
         $authItem = AuthRule::where('name', '=', $cpath)->find();
-        $depth = explode('-', $authItem->path);
-
         $breadcrumb = [];
-        foreach ($depth as $value) {
-            if($value <=0 ) continue;
+        if (!empty($authItem)) {
+            $depth = explode('-', $authItem->path);
+            foreach ($depth as $value) {
+                if ($value <= 0) continue;
 
-            $authItem = AuthRule::where('id', '=', $value)->find();
-            $breadcrumb[] = [
-                'title' => $authItem->title,
-                'url'   => url($authItem->name)->build()
-            ];
+                $authItem = AuthRule::where('id', '=', $value)->find();
+                $breadcrumb[] = [
+                    'title' => $authItem->title,
+                    'url' => url($authItem->name)->build()
+                ];
+            }
         }
 
         View::assign('breadcrumb', $breadcrumb);

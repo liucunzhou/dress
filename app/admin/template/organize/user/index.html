@@ -19,7 +19,7 @@
             <h1>
                 员工列表
                 <small>
-                    <a class="fa fa-plus-square" href="/admin.php?s=user/create" class="添加员工管理"></a>
+                    <a class="fa fa-plus-square" href="/admin/organize.user/create" class="添加员工管理"></a>
                 </small>
             </h1>
         </div>
@@ -60,8 +60,8 @@
                         <td>{$row.weigh}</td>
                         <td>
                             <div class="btn-group">
-                                <a class="btn" href="/admin.php?s=user/edit/id/{$row.id}">编辑</a>
-                                <a class="btn btn-delete" href="javascript:void(0);" data-href="/admin.php?s=user/delete/id/{$row.id}">删除</a>
+                                <a class="btn" href="/admin/organize.user/edit/id/{$row.id}">编辑</a>
+                                <a class="btn btn-delete" href="javascript:void(0);" data-href="/admin/organize.user/delete/id/{$row.id}">删除</a>
                             </div>
                         </td>
                     </tr>

@@ -45,7 +45,7 @@
                         </td>
                         <td class="center">{$row.id}</td>
                         <td class="center">
-                            <a class="underline layui-right-side" href="javascript:void(0);" data-action="/admin.php?s=visit/add/id/{$row.id}" title="回访客资">{$row.visit_times}</a>
+                            <a class="underline layui-right-side" href="javascript:void(0);" data-action="/admin/customer.visit/add/id/{$row.id}" title="回访客资">{$row.visit_times}</a>
                         </td>
                         <td class="center">{$sources[$row['source_id']]['title']}</td>
                         <td class="center">{$row.realname}</td>
@@ -54,8 +54,8 @@
                         <td class="center">{$row.createtime}</td>
                         <td>
                             <div class="hidden-sm hidden-xs btn-group">
-                                <a class="btn" href="/admin.php?s=customer/edit/id/{$row.id}">编辑</a>
-                                <a class="btn btn-delete" href="javascript:void(0);" data-href="/admin.php?s=customer/delete/id/{$row.id}">删除</a>
+                                <a class="btn" href="/admin/customer.customer/edit/id/{$row.id}">编辑</a>
+                                <a class="btn btn-delete" href="javascript:void(0);" data-href="/admin/customer.customer/delete/id/{$row.id}">删除</a>
                             </div>
                         </td>
                     </tr>

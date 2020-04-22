@@ -80,7 +80,7 @@ $(function(){
             //执行实例
             var uploadInst = upload.render({
                 elem: '#' + id //绑定元素
-                ,url: '/admin.php?s=ajax/upload' //上传接口
+                ,url: '/admin/ajax/upload' //上传接口
                 ,data: {
                     field: function(){
                         return  $(uploadInst.config.elem).attr("data-field");
