@@ -13,6 +13,8 @@ class Customer extends Api
 
     public function __construct(Request $request)
     {
+        parent::__construct($request);
+
         $this->validate = new \app\admin\validate\Customer();
         $this->model = new \app\admin\model\Customer();
 
@@ -21,9 +23,6 @@ class Customer extends Api
 
         $sourceModel = new \app\admin\model\Source();
         $this->sources =$sourceModel->order('weigh desc')->column('id,title,weigh', 'id');
-
-
-        parent::__construct($request);
     }
 
     public function index()

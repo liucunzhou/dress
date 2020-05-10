@@ -15,11 +15,6 @@ class Api
     public function __construct(Request $request)
     {
 
-        ### 构建左侧导航
-        $this->buildLeftSide();
-
-        ### 构建面包屑
-        $this->buildBreadcrumb();
     }
 
     public function index()
