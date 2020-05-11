@@ -248,6 +248,10 @@ class Rent extends Backend
      */
     public function read($id)
     {
+
+        $order = $this->model->find($id);
+        View::assign('order', $order);
+
         $where['rent_id'] = $id;
         $result = $this->rentGoods->where($where)->select();
         $goodsList = [];
@@ -266,30 +270,6 @@ class Rent extends Backend
         }
         View::assign('goodsList', $goodsList);
 
-        return View::fetch();
-    }
-
-    /**
-     * 取件
-     */
-    public function take()
-    {
-        return View::fetch();
-    }
-
-    /**
-     * 还件
-     */
-    public function back()
-    {
-        return View::fetch();
-    }
-
-    /**
-     * 清洗
-     */
-    public function wash()
-    {
         return View::fetch();
     }
 
