@@ -61,19 +61,19 @@ class Menu extends Api
                         'id'    => '1.1',
                         'icon'  => '',
                         'title' => '邀约客资',
-                        'path'  => '/customer/promoter"',
+                        'path'  => '/customer/promoter',
                     ],
                     [
                         'id'    => '1.2',
                         'icon'  => '',
                         'title' => '我的客资',
-                        'path'  => '/customer/index"',
+                        'path'  => '/customer/index',
                     ],
                     [
                         'id'    => '1.3',
                         'icon'  => '',
                         'title' => '客资公海',
-                        'path'  => '/customer/sea"',
+                        'path'  => '/customer/sea',
                     ],
                 ]
             ],
