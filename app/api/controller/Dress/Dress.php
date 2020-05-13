@@ -3,7 +3,7 @@ declare (strict_types = 1);
 
 namespace app\api\controller\dress;
 
-use app\Api\controller\Api;
+use app\api\controller\Api;
 use think\Request;
 
 class Dress extends Api
