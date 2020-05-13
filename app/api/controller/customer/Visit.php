@@ -2,7 +2,7 @@
 declare (strict_types = 1);
 
 namespace app\api\controller\customer;
-use app\admin\controller\Api;
+use app\api\controller\Api;
 use think\Request;
 
 class Visit extends Api
