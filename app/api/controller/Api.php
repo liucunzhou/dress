@@ -1,7 +1,7 @@
 <?php
 declare (strict_types = 1);
 
-namespace app\Api\controller;
+namespace app\api\controller;
 
 use think\Request;
 use think\exception\ValidateException;
