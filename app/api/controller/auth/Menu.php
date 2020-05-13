@@ -3,6 +3,7 @@ declare (strict_types = 1);
 
 namespace app\api\controller\auth;
 
+use app\Api\controller\Api;
 use think\Request;
 
 class Menu extends Api
