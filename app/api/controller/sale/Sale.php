@@ -26,7 +26,7 @@ class Sale extends Api
                 'id'        => 'order_no',
                 'field'     => 'order_no',
                 'label'     => '订单号',
-                'width'     => '',
+                'width'     => '180',
                 'source'    => 'value',
             ],
             [

@@ -19,17 +19,17 @@ class Menu extends Api
               {
                   title: "客资列表",
                 icon: "el-icon-message",
-                path: "/customer/index"
+                index: "/customer/index"
               },
               {
                   title: "回访列表",
                 icon: "el-icon-message",
-                path: "/visit/index"
+                index: "/visit/index"
               },
               {
                   title: "进店列表",
                 icon: "el-icon-message",
-                path: "/into/index"
+                index: "/into/index"
               }
             ]
           },
@@ -40,12 +40,12 @@ class Menu extends Api
               {
                   title: "部门管理",
                 icon: "el-icon-message",
-                path: "/department/index"
+                index: "/department/index"
               },
               {
                   title: "用户管理",
                 icon: "el-icon-message",
-                path: "/user/index"
+                index: "/user/index"
               }
             ]
           }
@@ -53,27 +53,34 @@ class Menu extends Api
 
         $menus = [
             [
+                'id'    => 0,
+                'icon'  => 'el-icon-lx-home',
+                'index' => 'dashboard',
+                'title' => '系统首页'
+            ],
+            [
                 'id'    => 1,
                 'icon'  => 'el-icon-s-custom',
+                'index' => 'customer',
                 'title'  => '客资管理',
                 'items'  => [
                     [
                         'id'    => '1.1',
                         'icon'  => '',
                         'title' => '邀约客资',
-                        'path'  => '/customer/promoter',
+                        'index'  => '/customer/promoter',
                     ],
                     [
                         'id'    => '1.2',
                         'icon'  => '',
                         'title' => '我的客资',
-                        'path'  => '/customer/index',
+                        'index'  => '/customer/index',
                     ],
                     [
                         'id'    => '1.3',
                         'icon'  => '',
                         'title' => '客资公海',
-                        'path'  => '/customer/sea',
+                        'index'  => '/customer/sea',
                     ],
                 ]
             ],
@@ -81,18 +88,19 @@ class Menu extends Api
                 'id'    => 2,
                 'icon'  => 'el-icon-shopping-cart-1',
                 'title'  => '订单管理',
+                'index' => 'order',
                 'items'  => [
                     [
                         'id'    => '2.1',
                         'icon'  => '',
                         'title' => '租赁订单',
-                        'path'  => '/rent/index',
+                        'index'  => '/rent/index',
                     ],
                     [
                         'id'    => '2.2',
                         'icon'  => '',
                         'title' => '销售订单',
-                        'path'  => '/sale/index',
+                        'index'  => '/sale/index',
                     ]
                 ]
             ],
@@ -100,30 +108,31 @@ class Menu extends Api
                 'id'    => 3,
                 'icon'  => 'el-icon-goods',
                 'title'  => '礼服管理',
+                'index' => 'dress',
                 'items'  => [
                     [
                         'id'    => '3.1',
                         'icon'  => '',
                         'title' => '礼服列表',
-                        'path'  => '/dress/index',
+                        'index'  => '/dress/dress/index',
                     ],
                     [
                         'id'    => '3.2',
                         'icon'  => '',
                         'title' => '礼服分类',
-                        'path'  => '/dress/category',
+                        'index'  => '/dress/category/index',
                     ],
                     [
                         'id'    => '3.3',
                         'icon'  => '',
                         'title' => '礼服套餐',
-                        'path'  => '/dress/package',
+                        'index'  => '/dress/package/index',
                     ],
                     [
                         'id'    => '3.4',
                         'icon'  => '',
                         'title' => '供应商',
-                        'path'  => '/dress/supplier',
+                        'index'  => '/dress/supplier/index',
                     ],
                 ]
             ],
@@ -131,18 +140,19 @@ class Menu extends Api
                 'id'    => 4,
                 'icon'  => 'el-icon-data-analysis',
                 'title'  => '组织架构',
+                'index' => 'organize',
                 'items'  => [
                     [
                         'id'    => '4.1',
                         'icon'  => '',
                         'title' => '部门管理',
-                        'path'  => '/department/index',
+                        'index'  => '/department/index',
                     ],
                     [
                         'id'    => '4.2',
                         'icon'  => '',
                         'title' => '员工管理',
-                        'path'  => '/user/index',
+                        'index'  => '/user/index',
                     ]
                 ]
             ],
