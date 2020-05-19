@@ -8,13 +8,23 @@ use think\exception\ValidateException;
 
 class Api
 {
+    protected $request = null;
     protected $user = [];
     protected $validate = '';
     protected $model = '';
+    protected $onlines = [];
 
     public function __construct(Request $request)
     {
-
+        $this->request = $request;
+        $this->onlines = [
+            'normal'   => [
+                'title' => '在线'
+            ],
+            'hidden'   => [
+                'title' => '下线'
+            ],
+        ];
     }
 
     public function index()

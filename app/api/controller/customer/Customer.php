@@ -112,11 +112,17 @@ class Customer extends Api
             'width'     => '',
             'buttons'   => [
                 [
-                    'label'     => '查看',
+                    'label'     => '编辑',
                     'type'      => 'text',
                     'size'      => 'small',
-                    'action'    => 'show'
-                ]
+                    'action'    => 'edit'
+                ],
+                [
+                    'label'     => '回访',
+                    'type'      => 'text',
+                    'size'      => 'small',
+                    'action'    => 'visit'
+                ],
             ],
         ];
 
