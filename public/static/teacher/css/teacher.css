@@ -1,0 +1,61 @@
+.form-register {
+    padding: 1rem;
+}
+.preview {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.preview .avatar-bg {
+    width: 100%;
+}
+
+.preview .avatar-bg img {
+    width: 100%;
+    height: 100%;
+}
+
+.preview .avatar-logo {
+    position: absolute;
+    left: 4.8%;
+    top: 4.8%;
+    z-index: 10;
+    width: 31.3%;
+}
+
+.preview .avatar-celebrate {
+    position: absolute;
+    top: 36px;
+    right: 0;
+    z-index: 10;
+    width: 29.3%;
+}
+
+.preview .avatar-huizhang{
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    z-index: 10;
+    width: 91%;
+    transform: translateX(-50%);
+}
+
+.preview .avatar-box{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 75%;
+    height: 75%;
+    transform: translate(-50%, -50%);
+    z-index: 9;
+    border: 1rem solid #d5302b;
+    border-radius: 50%;
+}
+
+.btn-upload {
+    width: 100%;
+}
+
+.btn-register {
+    width: 100%;
+}
