@@ -7,24 +7,38 @@
     <meta http-equiv="x-dns-prefetch-control" content="on">
     <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/teacher/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/teacher/css/teacher.css">
     <script src="/static/js/jquery-1.11.3.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/layui/layui.all.js"></script>
-    <script src="/static/teacher/js/teacher.js"></script>
+    <link  href="/static/teacher/cropper/cropper.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/cropperjs/dist/cropper.js" crossorigin="anonymous"></script>
+    <script src="/static/teacher/cropper/jquery-cropper.js"></script>
+    <script src="/static/teacher/js/teacher.js?{:rand(10000,1000000)}"></script>
 </head>
 <body>
 <form class="form-register">
+    <!--
     <div class="preview">
         <img class="avatar-logo" src="/static/teacher/img/logo.png"/>
         <img class="avatar-celebrate" src="/static/teacher/img/celebrate.png"/>
         <div class="avatar-bg"><img src="/static/teacher/img/bg.png"/></div>
         <img class="avatar-huizhang" src="/static/teacher/img/huizhang.png"/>
-        <div class="avatar-box"></div>
+        <div class="avatar-box">
+            <img src="/static/teacher/img/teacher.png"/>
+        </div>
+    </div>
+    -->
+    <div class="canvas-box">
+        <div id="preview-box"></div>
+        <canvas width="750" height="750" id="canvas" class="hide"></canvas>
     </div>
 
     <div class="form-group">
-        <div class="btn btn-default btn-upload">上传照片</div>
+        <div id="upload" class="btn btn-default btn-upload" onclick="$('input[id=inputImage]').click();">上传照片</div>
     </div>
 
     <div class="form-group">
@@ -32,61 +46,76 @@
         <input type="text" class="form-control" id="name" placeholder="输入姓名">
     </div>
     <div class="form-group">
-        <label for="position">输入岗位，如果课程顾问老师</label>
-        <input type="text" class="form-control" id="position" placeholder="输入岗位，如果课程顾问老师">
+        <label for="position">输入岗位，如课程顾问老师</label>
+        <input type="text" class="form-control" id="position" placeholder="输入岗位，如课程顾问老师">
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-register">报名</button>
+        <div id="preview" class="btn btn-success btn-register">预览</div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-register">生成</button>
     </div>
 </form>
 
-<div class="modal fade in" id="avatar-modal" aria-hidden="false" aria-labelledby="avatar-modal-label" role="dialog"
-     tabindex="-1" style="display: block; padding-left: 17px;">
+
+<div class="modal fade in" id="avatar-modal" aria-hidden="false" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form class="avatar-form">
-                <div class="modal-header">
-                    <button class="close" data-dismiss="modal" type="button">×</button>
-                    <h4 class="modal-title" id="avatar-modal-label">上传图片</h4>
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" type="button">×</button>
+                <div class="avatar-upload">
+                    <button class="btn btn-danger" type="button" style="height: 35px;"
+                            onclick="$('input[id=inputImage]').click();">请选择图片
+                    </button>
+                    <input class="avatar-src" name="avatar_src" type="hidden">
+                    <input class="avatar-data" name="avatar_data" type="hidden">
+                    <input class="avatar-input hide" id="inputImage" name="file" type="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
                 </div>
-                <div class="modal-body">
-                    <div class="avatar-body">
-                        <div class="avatar-upload">
-                            <input class="avatar-src" name="avatar_src" type="hidden">
-                            <input class="avatar-data" name="avatar_data" type="hidden">
-                            <label for="avatarInput" style="line-height: 35px;">图片上传</label>
-                            <button class="btn btn-danger" type="button" style="height: 35px;"
-                                    onclick="$('input[id=avatarInput]').click();">请选择图片
-                            </button>
-                            <span id="avatar-name"></span>
-                            <input class="avatar-input hide" id="avatarInput" name="avatar_file" type="file"></div>
-                        <div class="row">
-                            <div class="col-md-9">
-                                <div class="avatar-wrapper"></div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="avatar-preview preview-lg" id="imageHead"></div>
-                            </div>
-                        </div>
-                        <div class="row avatar-btns">
-                            <div class="btn-group">
-                                <button class="btn btn-danger fa fa-undo" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"> 向左旋转</button>
-                                <button class="btn  btn-danger fa fa-repeat" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"> 向右旋转</button>
-                                <button type="button" class="btn btn-danger fa fa-search-plus" data-method="zoom" data-option="0.1" title="放大图片">放大图片</button>
-                                <button type="button" class="btn btn-danger fa fa-search-minus" data-method="zoom" data-option="-0.1" title="缩小图片">缩小图片</button>
-                                <button type="button" class="btn btn-danger fa fa-refresh" data-method="reset" title="重置图片">重置图片</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <button class="btn btn-danger btn-block avatar-save fa fa-save" type="button" data-dismiss="modal">
-                                保存修改
-                            </button>
-                        </div>
+            </div>
+            <div class="modal-body">
+                <div class="img-container">
+                    <img id="#image" src="/static/teacher/img/bg.png"/>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row avatar-btns">
+                    <div class="btn-group">
+                        <div class="btn btn-danger fa fa-undo" data-method="rotate" data-option="-90" title="向左旋转"></div>
+                        <div class="btn btn-danger fa fa-repeat" data-method="rotate" data-option="90" title="向右旋转"></div>
+                        <div class="btn btn-danger fa fa-search-plus" data-method="zoom" data-option="0.1" title="放大图片"></div>
+                        <div class="btn btn-danger fa fa-search-minus" data-method="zoom" data-option="-0.1" title="缩小图片"></div>
+                        <div class="btn btn-danger fa fa-refresh" data-method="reset" title="重置图片"></div>
                     </div>
                 </div>
-            </form>
+                <br>
+                <div class="row">
+                    <button class="btn btn-danger btn-block avatar-save fa fa-save" type="button" data-dismiss="modal">
+                        保存
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<script>
+$(function () {
+    var $image = $('#image');
+
+    $image.cropper({
+        // aspectRatio: 16 / 9,
+        crop: function(event) {
+            console.log(event.detail.x);
+            console.log(event.detail.y);
+            console.log(event.detail.width);
+            console.log(event.detail.height);
+            console.log(event.detail.rotate);
+            console.log(event.detail.scaleX);
+            console.log(event.detail.scaleY);
+        }
+    });
+
+    var cropper = $image.data('cropper');
+})
+</script>
 </body>
 </html>
