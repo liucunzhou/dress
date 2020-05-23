@@ -39,6 +39,7 @@
 
     <div class="form-group">
         <div id="upload" class="btn btn-default btn-upload" onclick="$('input[id=inputImage]').click();">上传照片</div>
+        <input class="avatar-input hide" id="inputImage" name="file" type="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
     </div>
 
     <div class="form-group">
@@ -61,17 +62,6 @@
 <div class="modal fade in" id="avatar-modal" aria-hidden="false" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <button class="close" data-dismiss="modal" type="button">×</button>
-                <div class="avatar-upload">
-                    <button class="btn btn-danger" type="button" style="height: 35px;"
-                            onclick="$('input[id=inputImage]').click();">请选择图片
-                    </button>
-                    <input class="avatar-src" name="avatar_src" type="hidden">
-                    <input class="avatar-data" name="avatar_data" type="hidden">
-                    <input class="avatar-input hide" id="inputImage" name="file" type="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
-                </div>
-            </div>
             <div class="modal-body">
                 <div class="img-container">
                     <img id="#image" src="/static/teacher/img/bg.png"/>
@@ -84,7 +74,7 @@
                         <div class="btn btn-danger fa fa-repeat" data-method="rotate" data-option="90" title="向右旋转"></div>
                         <div class="btn btn-danger fa fa-search-plus" data-method="zoom" data-option="0.1" title="放大图片"></div>
                         <div class="btn btn-danger fa fa-search-minus" data-method="zoom" data-option="-0.1" title="缩小图片"></div>
-                        <div class="btn btn-danger fa fa-refresh" data-method="reset" title="重置图片"></div>
+                        <div class="btn btn-danger fa fa fa-upload" data-method="upload" title="重新上传"></div>
                     </div>
                 </div>
                 <br>
