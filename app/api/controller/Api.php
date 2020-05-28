@@ -29,16 +29,79 @@ class Api
 
     public function index()
     {
-        $where['status'] = 'normal';
-        $rows = $this->model->where($where)->order('weigh desc')->select();
-        View::assign('rows', $rows);
+        $where = [];
+        $model  = $this->model;
+        $rows   = $model->where($where)->order('id desc')->paginate(10);
+        $fieldSet = [
+            [
+                'id'        => 'id',
+                'field'     => 'id',
+                'label'     => '编号',
+                'width'     => '50',
+                'source'    => 'value',
+            ],
+            [
+                'id'        => 'title',
+                'field'     => 'title',
+                'label'     => '名称',
+                'width'     => '',
+                'source'    => 'value',
+            ],
+            [
+                'id'        => 'status',
+                'field'     => 'status',
+                'label'     => '状态',
+                'width'     => '80',
+                'source'    => 'value',
+            ],
+            [
+                'id'        => 'weigh',
+                'field'     => 'weigh',
+                'label'     => '排序',
+                'width'     => '80',
+                'source'    => 'value',
+            ],
+        ];
+        $list = [];
+        foreach ($rows as $key=>$row) {
+            foreach ($fieldSet as $value) {
+                $id = $value['id'];
+                $field = $value['field'];
+                if($value['source'] == 'value') {
+                    $list[$key][$field] = $row->$field;
+                } else {
+                    $index = $row->$field;
+                    $sourceName = $value['source'];
+                    $sources = $this->$sourceName;
+                    $list[$key][$id] = $sources[$index]['title'];
+                }
+            }
+        }
 
-        return View::fetch();
-    }
+        $fieldSet[] = [
+            'id'        => 'operation',
+            'field'     => 'operation',
+            'label'     => '操作',
+            'width'     => '',
+            'buttons'   => [
+                [
+                    'label'     => '查看',
+                    'type'      => 'text',
+                    'size'      => 'small',
+                    'action'    => 'show'
+                ]
+            ],
+        ];
 
-    public function create()
-    {
-        return View::fetch();
+        $result = [
+            'code'  => '200',
+            'msg'   => '获取数据成功',
+            'data'  => [
+                'list'      => $list,
+                'fields'    => $fieldSet,
+            ]
+        ];
+        return json($result);
     }
 
     public function doCreate()
@@ -82,9 +145,15 @@ class Api
     public function edit($id)
     {
         $row = $this->model->find($id);
-        View::assign('data', $row);
+        $result = [
+            'code'  => '200',
+            'msg'   => '获取数据成功',
+            'data'  => [
+                'row' => $row
+            ]
+        ];
 
-        return View::fetch();
+        return json($result);
     }
 
     /**
@@ -138,80 +207,5 @@ class Api
         }
 
         return json($arr);
-    }
-
-    /**
-     * 生成source
-     */
-    public function source($id)
-    {
-        $result = $this->model->column($id);
-
-        $filename = $this->model->getName();
-        $filename = strtolower($filename);
-        $content = "var {$filename} =".json_encode($result).";";
-        file_put_contents("./assets/source/{$filename}.js", $content);
-    }
-
-    private function buildLeftSide()
-    {
-        $module = $this->request->rootUrl();
-        $controller = $this->request->controller();
-        $action = $this->request->action();
-        $cpath = strtolower($module.'/'.$controller . '/' . $action);
-
-        ### 获取当前事件的目录
-        $authItem = AuthRule::where('name', '=', $cpath)->find();
-        if($authItem) {
-            $depth = explode('-', $authItem->path);
-            $dirId = $depth[1];
-        } else {
-            $dirId = 0;
-        }
-
-        $where = [];
-        $where['status'] = 'normal';
-        $where['ismenu'] = 1;
-        $rules = AuthRule::where($where)->order('weigh desc')->select();
-        $menu = [];
-
-        ### 初始化菜单
-        foreach ($rules as $rule) {
-            $data = $rule->getData();
-            if($data['pid'] == 0) {
-                $menu[$data['id']]['info'] = $data;
-                $menu[$data['id']]['active'] = $dirId != 0 && $data['id'] == $dirId ? '1' : 0;
-            } else {
-                $menu[$data['pid']]['items'][] = $data;
-            }
-        }
-
-        View::assign('menu', $menu);
-    }
-
-    private function buildBreadcrumb()
-    {
-        $module = $this->request->rootUrl();
-        $controller = $this->request->controller();
-        $action = $this->request->action();
-        $cpath = strtolower($module.'/'.$controller . '/' . $action);
-
-        ### 获取当前事件的目录
-        $authItem = AuthRule::where('name', '=', $cpath)->find();
-        $breadcrumb = [];
-        if (!empty($authItem)) {
-            $depth = explode('-', $authItem->path);
-            foreach ($depth as $value) {
-                if ($value <= 0) continue;
-
-                $authItem = AuthRule::where('id', '=', $value)->find();
-                $breadcrumb[] = [
-                    'title' => $authItem->title,
-                    'url' => url($authItem->name)->build()
-                ];
-            }
-        }
-
-        View::assign('breadcrumb', $breadcrumb);
     }
 }
